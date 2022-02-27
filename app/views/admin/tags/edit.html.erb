@@ -1,0 +1,7 @@
+<h1>タグ編集</h1>
+
+<%= form_with model: @tag, url: admin_tag_path, local:true do |f| %>
+  <%= f.label :name, 'タグ名' %>
+  <%= f.text_field :name, autofocus: true, placeholder:"タグ名"%>
+  <%= f.submit "変更を保存" %>
+<% end %>

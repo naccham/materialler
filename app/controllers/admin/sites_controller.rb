@@ -20,8 +20,8 @@ class Admin::SitesController < ApplicationController
   end
 
   def update
-    site = List.find(params[:id])
-    site.update(site_params)
+    @site = List.find(params[:id])
+    @site.update(site_params)
     redirect_to admin_sites_path
   end
 

@@ -1,0 +1,21 @@
+<h1>タグ一覧</h1>
+
+<div>
+  <h2>新規登録</h2>
+  <%= form_with model: @tag, url: admin_tags_path, local:true do |f| %>
+    <%= f.label :name, 'タグ名' %>
+    <%= f.text_field :name %>
+    <%= f.submit '作成' %>
+  <% end %>
+</div>
+
+<div>
+  <h2>タグ一覧</h2>
+  <% @tags.each do |tag| %>
+    <div>
+      <%= tag.name %>
+      <%= link_to "編集", edit_admin_tag_path(tag.id), class: '' %>
+      <%= link_to "削除", admin_tag_path(tag.id), method: :delete  %>
+    </div>
+  <% end %>
+</div>
