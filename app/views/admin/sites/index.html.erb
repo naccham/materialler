@@ -1,0 +1,23 @@
+<h1>サイト一覧・新規登録</h1>
+
+<%= form_with model: @site, url: admin_sites_path, local:true do |f| %>
+  <%= f.label :title, 'サイト名' %>
+  <%= f.text_field :title %>
+  <%= f.label :introduce, '説明文' %>
+  <%= f.text_area :introduce %>
+  <%= f.submit '作成' %>
+<% end %>
+
+<div class="site-lists">
+  <h2>サイト一覧</h2>
+  <% @sites.each do |site| %>
+    <div>
+      <%= link_to admin_site_path(site.id) do %>
+        <%= site.title %>
+      <% end %>
+      <%= site.introduce %>
+      <%= link_to "編集", edit_admin_site_path(site.id), class: '' %>
+      <%= link_to "削除", admin_site_path(site.id), method: :delete  %>
+    </div>
+  <% end %>
+</div>
