@@ -3,10 +3,12 @@ class Admin::SitesController < ApplicationController
   def index
     @site = Site.new
     @sites = Site.all
+    @tags = Tag.all
   end
 
   def create
     @site = Site.new(site_params)
+    
     @site.save
     redirect_to admin_sites_path
   end
@@ -20,7 +22,7 @@ class Admin::SitesController < ApplicationController
   end
 
   def update
-    @site = List.find(params[:id])
+    @site = Site.find(params[:id])
     @site.update(site_params)
     redirect_to admin_sites_path
   end
@@ -34,6 +36,6 @@ class Admin::SitesController < ApplicationController
   private
 
   def site_params
-    params.require(:site).permit(:title, :introduce)
+    params.require(:site).permit(:title, :introduce, {tag_ibs: []})
   end
 end

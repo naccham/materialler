@@ -1,4 +1,6 @@
 class Site < ApplicationRecord
-  belongs_to :tag
+  has_many :site_tag_relations
+  has_many :tags, through: :site_tag_relations
+
   has_many :bookmarks, dependent: :destroy
 end
