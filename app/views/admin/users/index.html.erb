@@ -1,0 +1,11 @@
+<div>
+  <h2>会員一覧</h2>
+  <% @users.each do |user| %>
+    <p>
+      <%= link_to admin_user_path(user.id) do %>
+        <%= user.email %>
+      <% end %>
+      <%= user.active %>
+    </p>
+  <% end %>
+</div>
