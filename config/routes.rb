@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :sites, except: [:new]
     resources :tags, only: [:index, :new, :create, :edit, :update, :destroy]
+    resources :tags do
+    get 'sites', to: 'sites#search'end
     resources :users, only: [:show, :index, :edit, :update]
   end
   

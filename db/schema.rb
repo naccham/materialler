@@ -32,6 +32,8 @@ ActiveRecord::Schema.define(version: 2022_02_27_135544) do
   end
 
   create_table "site_tag_relations", force: :cascade do |t|
+    t.integer "site_id"
+    t.integer "tag_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -40,6 +42,7 @@ ActiveRecord::Schema.define(version: 2022_02_27_135544) do
     t.integer "tag_id"
     t.string "title"
     t.text "introduce"
+    t.string "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

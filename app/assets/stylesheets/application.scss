@@ -13,6 +13,8 @@
  *= require_tree .
  *= require_self
  */
+ @import 'font-awesome-sprockets';
+ @import 'font-awesome';
 
 body {
   margin: 0;
@@ -21,9 +23,14 @@ body {
 
 .header {
   display: flex;
+  background-color: lightgray;
 }
 
 .menu-list {
   display: flex;
   list-style: none;
+}
+
+.menu-item {
+  margin: 10px;
 }

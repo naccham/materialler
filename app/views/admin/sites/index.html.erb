@@ -1,31 +1,36 @@
 <h1>サイト一覧・新規登録</h1>
 
 <%= form_with model: @site, url: admin_sites_path, local:true do |f| %>
-  <%= f.label :title, 'サイト名' %>
-  <%= f.text_field :title %>
+    <h4><%= f.label :title, 'サイト名' %></h4>
+    <%= f.text_field :title %>
   
-  <%= f.label :introduce, '説明文' %>
-  <%= f.text_area :introduce %>
-  
-  <%= f.label :tag, 'タグ' %>
-  <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
-    <%= tag.label do %>
-      <%= tag.check_box %>
-      <%= tag.name %>
-    <% end %>
-  <% end %>
+    <h4><%= f.label :url, 'URL' %></h4>
+    <%= f.text_field :url %>
 
-  <%= f.submit '作成' %>
+    <h4><%= f.label :introduce, '説明文' %></h4>
+    <%= f.text_area :introduce %>
+  
+    <h4><%= f.label :tag, 'タグ' %></h4>
+    <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) %>
+  
+    <%= f.submit '作成' %>
 <% end %>
 
 <div class="site-lists">
   <h2>サイト一覧</h2>
   <% @sites.each do |site| %>
     <div>
-      <%= link_to admin_site_path(site.id) do %>
-        <%= site.title %>
+      
+      <%= site.title %>
+      
+      <%= link_to site.url do %>
+        <i class="fas fa-external-link-alt"></i>
       <% end %>
-      <%= site.introduce %>
+      
+      <% site.tags.each do |tag| %>
+        <span style="padding:4px;background-color:lightgray;border-radius: 4px;"><%= tag.name %></span>
+      <% end %>
+      <%= link_to "詳細", admin_site_path(site.id), class: '' %>
       <%= link_to "編集", edit_admin_site_path(site.id), class: '' %>
       <%= link_to "削除", admin_site_path(site.id), method: :delete  %>
     </div>

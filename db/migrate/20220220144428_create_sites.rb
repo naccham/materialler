@@ -4,6 +4,7 @@ class CreateSites < ActiveRecord::Migration[5.2]
       t.integer :tag_id
       t.string :title
       t.text :introduce
+      t.string :url
       t.timestamps
     end
   end

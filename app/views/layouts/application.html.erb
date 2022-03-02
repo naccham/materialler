@@ -5,8 +5,10 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/910ae00410.js" crossorigin="anonymous"></script>
   </head>
 
   <body>
@@ -17,21 +19,21 @@
       <div class="menu">
         <% if admin_signed_in? %>
         <ul class="menu-list">
-          <li><%= link_to 'サイト一覧', admin_sites_path, class: '' %></li>
-          <li><%= link_to 'タグ一覧', admin_tags_path, class: '' %></li>
-          <li><%= link_to '会員一覧', admin_users_path, class: '' %></li>
-          <li><%= link_to '管理者ログアウト', destroy_admin_session_path, method: :delete ,class: '' %></li>
+          <li class="menu-item"><%= link_to 'サイト一覧', admin_sites_path, class: '' %></li>
+          <li class="menu-item"><%= link_to 'タグ一覧', admin_tags_path, class: '' %></li>
+          <li class="menu-item"><%= link_to '会員一覧', admin_users_path, class: '' %></li>
+          <li class="menu-item"><%= link_to '管理者ログアウト', destroy_admin_session_path, method: :delete ,class: '' %></li>
         </ul>
         <% elsif user_signed_in? %>
-        
+
         <ul class="menu-list">
-          <li><%= link_to 'マイページ', site_path(current_user.id), class: '' %></li>
-          <li><%= link_to '会員ログアウト', destroy_user_session_path, method: :delete, class: '' %></li>
+          <li class="menu-item"><%= link_to 'マイページ', site_path(current_user.id), class: '' %></li>
+          <li class="menu-item"><%= link_to '会員ログアウト', destroy_user_session_path, method: :delete, class: '' %></li>
         </ul>
         <% else %>
         <ul class="menu-list">
-          <li><%= link_to '管理者ログイン', new_admin_session_path, class: '' %></li>
-          <li><%= link_to '会員ログイン', new_user_session_path, class: '' %></li>
+          <li class="menu-item"><%= link_to '管理者ログイン', new_admin_session_path, class: '' %></li>
+          <li class="menu-item"><%= link_to '会員ログイン', new_user_session_path, class: '' %></li>
         </ul>
         <% end %>
       </div>
