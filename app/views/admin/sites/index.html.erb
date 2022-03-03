@@ -1,16 +1,16 @@
 <h1>サイト一覧・新規登録</h1>
 
 <%= form_with model: @site, url: admin_sites_path, local:true do |f| %>
-    <h4><%= f.label :title, 'サイト名' %></h4>
+    <%= f.label :title, 'サイト名' %>
     <%= f.text_field :title %>
   
-    <h4><%= f.label :url, 'URL' %></h4>
+    <%= f.label :url, 'URL' %>
     <%= f.text_field :url %>
 
-    <h4><%= f.label :introduce, '説明文' %></h4>
+    <%= f.label :introduce, '説明文' %>
     <%= f.text_area :introduce %>
   
-    <h4><%= f.label :tag, 'タグ' %></h4>
+    <%= f.label :tag, 'タグ' %>
     <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) %>
   
     <%= f.submit '作成' %>

@@ -8,13 +8,7 @@ class Admin::SitesController < ApplicationController
   end
 
   def create
-    @site = Site.new(site_params)
-    if @site.save
-      tag_ids = params[:site][:tag_ids].map(&:to_i).uniq
-      tag_ids.shift
-      tag_ids.each do |tag_id|
-        SiteTagRelation.create({site_id: @site.id, tag_id: tag_id})
-      end
+    if @site = Site.create(site_params)
     end
     redirect_to admin_sites_path
   end
@@ -30,11 +24,6 @@ class Admin::SitesController < ApplicationController
   def update
     @site = Site.find(params[:id])
     if @site.update(site_params)
-      tag_ids = params[:site][:tag_ids].map(&:to_i).uniq
-      tag_ids.shift
-      tag_ids.each do |tag_id|
-        SiteTagRelation.update({site_id: @site.id, tag_id: tag_id})
-      end
     end
     redirect_to admin_sites_path
   end
@@ -50,6 +39,6 @@ class Admin::SitesController < ApplicationController
   private
 
   def site_params
-    params.require(:site).permit(:title, :introduce, :url)
+    params.require(:site).permit(:title, :introduce, :url, tag_ids: [])
   end
 end
