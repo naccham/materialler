@@ -4,12 +4,12 @@ class Admin::SitesController < ApplicationController
     @site = Site.new
     @sites = Site.all
     @tags = Tag.all
+    @posts = params[:tag_id].present? ? Site.find(params[:tag_id]).tags : Site.all
   end
 
   def create
-    @site = Site.new(site_params)
-    @site.tag_id
-    @site.save
+    if @site = Site.create(site_params)
+    end
     redirect_to admin_sites_path
   end
 
@@ -23,7 +23,8 @@ class Admin::SitesController < ApplicationController
 
   def update
     @site = Site.find(params[:id])
-    @site.update(site_params)
+    if @site.update(site_params)
+    end
     redirect_to admin_sites_path
   end
 
@@ -33,9 +34,11 @@ class Admin::SitesController < ApplicationController
     redirect_to admin_sites_path
   end
 
+
+
   private
 
   def site_params
-    params.require(:site).permit(:title, :introduce, tag_ibs:[])
+    params.require(:site).permit(:title, :introduce, :url, tag_ids: [])
   end
 end

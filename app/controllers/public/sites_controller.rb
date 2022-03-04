@@ -1,2 +1,6 @@
-class User::SitesController < ApplicationController
+class Public::SitesController < ApplicationController
+  
+  def index
+    @sites = Site.all
+  end
 end
