@@ -8,6 +8,21 @@
     <%= site.introduce %>
     <% site.tags.each do |tag| %>
         <span style="padding:4px;background-color:lightgray;border-radius: 4px;"><%= tag.name %></span>
-      <% end %>
+    <% end %>
+
+    <!--ブックマーク機能-->
+    <% if site.bookmarked_by?(current_user) %>
+      <p>
+        <%= link_to site_bookmarks_path(site.id), method: :delete do %>
+          ♥<%= site.bookmarks.count %> お気に入り
+        <% end %>
+      </p>
+      <% else %>
+      <p>
+        <%= link_to site_bookmarks_path(site.id), method: :post do %>
+          ♡<%= site.bookmarks.count %> お気に入り
+        <% end %>
+      </p>
+    <% end %>
   </div>
 <% end %>

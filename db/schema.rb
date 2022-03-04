@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 2022_02_27_135544) do
 
   create_table "sites", force: :cascade do |t|
     t.integer "tag_id"
+    t.integer "bookmark_id"
     t.string "title"
     t.text "introduce"
     t.string "url"
@@ -60,6 +61,7 @@ ActiveRecord::Schema.define(version: 2022_02_27_135544) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.boolean "active", default: true, null: false
+    t.integer "bookmark_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true

@@ -16,6 +16,10 @@
       <div class="logo">
         <%= link_to 'materialler', root_path, class: '' %>
       </div>
+      <%= form_with url: search_sites_path, method: :get, local: true do |f| %>
+          <%= f.text_field :title %>
+          <%= f.submit :search %>
+      <% end %>
       <div class="menu">
         <% if admin_signed_in? %>
         <ul class="menu-list">
