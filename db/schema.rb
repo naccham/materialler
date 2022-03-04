@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 2022_02_27_135544) do
     t.string "title"
     t.text "introduce"
     t.string "url"
+    t.string "thumbnail"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
