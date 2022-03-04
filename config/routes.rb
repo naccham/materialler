@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   scope module: :public do
     resources :sites, only: [:show, :index]
     resources :users, only: [:show, :edit, :update]
+    resources :tags, only: [:show, :index]
   end
   
   
