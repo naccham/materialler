@@ -24,13 +24,11 @@
   <% @sites.each do |site| %>
     <div>
       <%= image_tag site.thumbnail %>
-
       <%= site.title %>
-
       <%= link_to site.url do %>
         <i class="fas fa-external-link-alt"></i>
       <% end %>
-
+      <%= site.introduce %>
       <% site.tags.each do |tag| %>
         <span style="padding:4px;background-color:lightgray;border-radius: 4px;"><%= tag.name %></span>
       <% end %>
