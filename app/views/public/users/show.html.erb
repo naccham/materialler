@@ -2,30 +2,24 @@
 
 <%= current_user.email %>
 
-<%= link_to '編集' ,user_bookmarks_path(current_user.id) %>
-
 <div>
   <h2>ブックマーク一覧</h2>
-<% @bookmarks.each do |bookmark| %>
-  <div>
-  <%= image_tag bookmark.site.thumbnail %>
-  <%= link_to bookmark.site.url do %>
-    <%= bookmark.site.title %>
-  <% end %>
-  <!--ブックマーク機能-->
-  <% if bookmark.site.bookmarked_by?(current_user) %>
-    <%= link_to site_bookmarks_path(bookmark.site.id, mypage: true), method: :delete do %>
-      ♥<%= bookmark.site.bookmarks.count %>
-    <% end %>
-  <% else %>
-    <%= link_to site_bookmarks_path(bookmark.site.id), method: :post do %>
-      ♡<%= bookmark.site.bookmarks.count %>
-    <% end %>
-      
-  <% end %>
-  <%= bookmark.site.introduce %>
-  </div>
+  <% @bookmarks.each do |bookmark| %>
+    <div>
+      <%= image_tag "http://capture.heartrails.com/170x100/shorten?" + bookmark.site.url %>
+      <%= link_to bookmark.site.url do %>
+        <%= bookmark.site.title %>
+      <% end %>
 
-  
-<% end %>
+      <!--ブックマーク機能-->
+      <span id="bookmark_buttons_<%= bookmark.id %>">
+        <%= render "public/users/bookmark", bookmark: bookmark %>
+      </span>
+
+      <%= bookmark.site.introduce %>
+      <% bookmark.site.tags.each do |tag| %>
+        <span style="padding:4px;background-color:lightgray;border-radius: 4px;"><%= tag.name %></span>
+      <% end %>
+    </div>
+  <% end %>
 </div>

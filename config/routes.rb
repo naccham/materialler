@@ -14,17 +14,14 @@ Rails.application.routes.draw do
   end
 
   scope module: :public do
-    resources :sites, only: [:index]
-    resources :sites do
+    resources :sites, only: [:index] do
       get :search, on: :collection
       resource :bookmarks, only: [:create, :destroy]
     end
-    resources :users, only: [:show, :edit, :update] do
-      resources :bookmarks,only: [:index]
+    resources :users, only: [:show, :edit, :update]
+    resources :tags, only: [:show, :index] do
+      get :search, on: :collection
     end
-    resource :users, only: [:create, :destroy]
-    resources :tags, only: [:show, :index]
-
   end
 
 

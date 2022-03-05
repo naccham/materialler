@@ -6,7 +6,6 @@ class CreateSites < ActiveRecord::Migration[5.2]
       t.string :title
       t.text :introduce
       t.string :url
-      t.string :thumbnail
       t.timestamps
     end
   end

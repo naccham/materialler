@@ -7,9 +7,6 @@
     <%= f.label :url, 'URL' %>
     <%= f.text_field :url %>
 
-    <%= f.label :thumbnail, 'サムネイル画像のURL' %>
-    <%= f.text_field :thumbnail %>
-
     <%= f.label :introduce, '説明文' %>
     <%= f.text_area :introduce %>
 
@@ -23,7 +20,7 @@
   <h2>サイト一覧</h2>
   <% @sites.each do |site| %>
     <div>
-      <%= image_tag site.thumbnail %>
+      <span><%= image_tag "http://capture.heartrails.com/170x100/shorten?" + site.url %></span>
       <%= site.title %>
       <%= link_to site.url do %>
         <i class="fas fa-external-link-alt"></i>

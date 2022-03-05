@@ -1,4 +1,17 @@
 <h1>タグ一覧</h1>
 <% @tags.each do |tag| %>
-  <span style="padding:4px;background-color:lightgray;border-radius: 4px;"><%= tag.name %></span>
+  
+  <span style="padding:4px;background-color:lightgray;border-radius: 4px;">
+    <%= link_to tag_path(tag.id) do %>
+      <%= tag.name %>
+    <% end %>
+  </span>
 <% end %>
+
+<%= form_with url: search_tags_path, method: :get, local: true do |f| %>
+    <%= f.label :tag, 'タグ' %>
+    <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) %>
+    <%= f.submit :search %>
+<% end %>
+
+

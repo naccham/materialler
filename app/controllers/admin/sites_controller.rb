@@ -3,7 +3,6 @@ class Admin::SitesController < ApplicationController
   def index
     @site = Site.new
     @sites = Site.all
-    @tags = Tag.all
     @posts = params[:tag_id].present? ? Site.find(params[:tag_id]).tags : Site.all
   end
 
@@ -39,6 +38,6 @@ class Admin::SitesController < ApplicationController
   private
 
   def site_params
-    params.require(:site).permit(:title, :introduce, :url, :thumbnail, tag_ids: [])
+    params.require(:site).permit(:title, :introduce, :url, tag_ids: [])
   end
 end

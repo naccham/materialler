@@ -1,8 +1,8 @@
-<h1>ユーザー用サイト一覧</h1>
+<h1>サイト一覧</h1>
 
 <% @sites.each do |site| %>
   <div>
-    <%= image_tag site.thumbnail %>
+    <span><%= image_tag "http://capture.heartrails.com/170x100/shorten?" + site.url %></span>
     <%= link_to site.url do %>
       <%= site.title %>
     <% end %>
@@ -12,18 +12,8 @@
     <% end %>
 
     <!--ブックマーク機能-->
-    <% if site.bookmarked_by?(current_user) %>
-      
-        <%= link_to site_bookmarks_path(site.id), method: :delete do %>
-          ♥<%= site.bookmarks.count %>
-        <% end %>
-      
-      <% else %>
-      
-        <%= link_to site_bookmarks_path(site.id), method: :post do %>
-          ♡<%= site.bookmarks.count %>
-        <% end %>
-      
-    <% end %>
+    <span id="bookmark_buttons_<%= site.id %>">
+      <%= render "public/sites/bookmark", site: site %>
+    </span>
   </div>
 <% end %>

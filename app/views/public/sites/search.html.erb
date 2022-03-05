@@ -3,7 +3,7 @@
   <div>
     <% @sites.each do |site| %>
       <div>
-        <%= image_tag site.thumbnail %>
+        <%= image_tag "http://capture.heartrails.com/170x100/shorten?" + site.url %>
         <%= link_to site.url do %>
           <%= site.title %>
         <% end %>

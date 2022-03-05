@@ -1,0 +1,16 @@
+<h1><%= @tag.name %></h1>
+
+
+<h2>タグ検索結果</h2><%= @tag.sites.count %>サイト見つかりました
+<% @tag.sites.each do |site| %>
+  <div>
+    <%= image_tag "http://capture.heartrails.com/170x100/shorten?" + site.url %>
+    <%= link_to site.url do %>
+      <%= site.title %>
+    <% end %>
+    <%= site.introduce %>
+    <% site.tags.each do |tag| %>
+      <span style="padding:4px;background-color:lightgray;border-radius: 4px;"><%= tag.name %></span>
+    <% end %>
+  </div>
+<% end %>

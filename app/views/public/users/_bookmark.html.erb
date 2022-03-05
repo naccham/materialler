@@ -1,0 +1,10 @@
+
+<% if bookmark.site.bookmarked_by?(current_user) %>
+  <%= link_to site_bookmarks_path(bookmark.site.id, mypage: true), method: :delete, remote: true do %>
+    ♥<%= bookmark.site.bookmarks.count %>
+  <% end %>
+<% else %>
+  <%= link_to site_bookmarks_path(bookmark.site.id, mypage: true), method: :post, remote: true do %>
+    ♡<%= bookmark.site.bookmarks.count %>
+  <% end %>
+<% end %>
