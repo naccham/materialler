@@ -2,6 +2,7 @@
 
 <% @sites.each do |site| %>
   <div>
+    <%= image_tag site.thumbnail %>
     <%= link_to site.url do %>
       <%= site.title %>
     <% end %>
@@ -12,17 +13,17 @@
 
     <!--ブックマーク機能-->
     <% if site.bookmarked_by?(current_user) %>
-      <p>
+      
         <%= link_to site_bookmarks_path(site.id), method: :delete do %>
-          ♥<%= site.bookmarks.count %> お気に入り
+          ♥<%= site.bookmarks.count %>
         <% end %>
-      </p>
+      
       <% else %>
-      <p>
+      
         <%= link_to site_bookmarks_path(site.id), method: :post do %>
-          ♡<%= site.bookmarks.count %> お気に入り
+          ♡<%= site.bookmarks.count %>
         <% end %>
-      </p>
+      
     <% end %>
   </div>
 <% end %>

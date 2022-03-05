@@ -1,20 +1,14 @@
-<h1>検索結果</h1>
-<table>
-  <thead>
-    <tr>
-      <th>サイト名</th>
-    </tr>
-  </thead>
-  <tbody>
+<div>
+  <h1>検索結果</h1>
+  <div>
     <% @sites.each do |site| %>
-      <tr>
-        <td>
-          <%= link_to site.url do %>
-            <%= site.title %>
-          <% end %>
-        </td>
-        <td><%= site.introduce %></td>
-      </tr>
+      <div>
+        <%= image_tag site.thumbnail %>
+        <%= link_to site.url do %>
+          <%= site.title %>
+        <% end %>
+        <%= site.introduce %>
+      </div>
     <% end %>
-  </tbody>
-</table>
+  </div>
+</div>
