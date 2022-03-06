@@ -1,0 +1,22 @@
+<h1>サイト詳細</h1>
+
+<%= image_tag @site_image + @site.url %>
+<%= link_to @site.url do %>
+  <%= @site.title %>
+<% end %>
+<%= @site.introduce %>
+<% @site.tags.each do |tag| %>
+  <span style="padding:4px;background-color:lightgray;border-radius: 4px;"><%= tag.name %></span>
+<% end %>
+
+<%= @site.post_comments.each do |post_comment| %>
+  <%= post_comment.comment %>
+<% end %>
+
+<span id="bookmark_buttons_<%= @site.id %>">
+  <%= render "public/sites/bookmark", site: @site %>
+</span>
+
+<span id="post_comment_buttons_<%= @site.id %>">
+  <%= render "public/sites/post_comment", site: @site, post_comment: @post_comment %>
+</span>
