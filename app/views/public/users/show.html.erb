@@ -12,8 +12,8 @@
       <% end %>
 
       <!--ブックマーク機能-->
-      <span id="bookmark_buttons_<%= bookmark.id %>">
-        <%= render "public/users/bookmark", bookmark: bookmark %>
+      <span id="bookmark_buttons_<%= bookmark.site.id %>">
+        <%= render "public/bookmarks/bookmark", site: bookmark.site %>
       </span>
 
       <%= bookmark.site.introduce %>

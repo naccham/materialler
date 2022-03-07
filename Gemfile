@@ -64,3 +64,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'font-awesome-sass', '~> 5.13'
 gem 'jquery-rails'
+gem "dotenv-rails"

@@ -7,8 +7,9 @@
   <span style="padding:4px;background-color:lightgray;border-radius: 4px;"><%= tag.name %></span>
 <% end %>
 
+<!--ブックマーク-->
 <span id="bookmark_buttons_<%= @site.id %>">
-  <%= render "public/sites/bookmark", site: @site %>
+  <%= render "public/bookmarks/bookmark", site: @site %>
 </span>
 
 <!--コメントフォーム-->
