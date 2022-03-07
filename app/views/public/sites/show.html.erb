@@ -13,26 +13,10 @@
 
 <!--コメントフォーム-->
 <div class="new-comment">
-  <%= form_with(model:[@site, @comment], url: site_comments_path(@site.id), local: true) do |f| %>
-    <!--エラーメッセージ-->
-    <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
-    <%= f.submit "送信する" %>
-  <% end %>
+  <%= render 'public/comments/form', site: @site, comment: @comment %>
 </div>
 
 <!--コメント一覧部分-->
-<div class="comments">
-  <% if @site.comments.present? %>
-  <p>コメント件数：<%= @site.comments.count %></p>
-  <% @site.comments.each do |comment| %>
-    <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
-    <% if comment.user == current_user %>
-      <div class="comment-delete">
-        <%= link_to "削除", site_comment_path(comment.site, comment), method: :delete, data: {confirm: "本当に削除しますか？"} %>
-      </div>
-    <% end %>
-  <% end %>
-  <% else %>
-  <p>コメントはまだありません</p>
-  <% end %>
+<div id="comments_area">
+  <%= render 'public/comments/site_comments', site: @site, comment: @comment %>
 </div>

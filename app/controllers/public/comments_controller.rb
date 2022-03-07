@@ -5,7 +5,7 @@ class Public::CommentsController < ApplicationController
     @comment = current_user.comments.new(comment_params)
     @comment.site_id = @site.id
     if @comment.save
-      redirect_to site_path(@site), notice: 'コメントを投稿しました'
+      render :site_comments
     else
       render 'sites/show'
     end
@@ -13,7 +13,8 @@ class Public::CommentsController < ApplicationController
   
   def destroy
     Comment.find_by(id: params[:id], site_id: params[:site_id]).destroy
-    redirect_to site_path(params[:site_id]), alert: 'コメントを削除しました'
+    @site = Site.find(params[:site_id])
+    render :site_comments
   end
 
   private
