@@ -23,6 +23,10 @@ Rails.application.routes.draw do
     resources :tags, only: [:show, :index] do
       get :search, on: :collection
     end
+    resources :contacts, only: [:new, :create]
+    post 'contact/confirm', to: 'contacts#confirm', as: 'confirm'
+    post 'contact/back', to: 'contact#back', as: 'back'
+    get 'done', to: 'contact#done', as: 'done'
   end
 
 

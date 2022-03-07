@@ -65,3 +65,5 @@ gem 'devise'
 gem 'font-awesome-sass', '~> 5.13'
 gem 'jquery-rails'
 gem "dotenv-rails"
+gem 'rails-i18n'
+gem 'enum_help'
