@@ -19,13 +19,13 @@ class Public::ContactsController < ApplicationController
     @contact = Contact.new(contact_params)
     if @contact.save
       ContactMailer.send_mail(@contact).deliver_now
-      redirect_to done_path
+      redirect_to thanks_path
     else
       render :new
     end
   end    
   
-  def done
+  def thanks
   end
   
   private

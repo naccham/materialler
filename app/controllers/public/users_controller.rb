@@ -1,4 +1,7 @@
 class Public::UsersController < ApplicationController
+  
+  before_action :authenticate_user!,only: [:show]
+  
   def show
     @bookmarks = Bookmark.all
     @bookmarks = current_user.bookmarks

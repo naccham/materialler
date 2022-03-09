@@ -208,7 +208,7 @@ ja:
     
 ja:
   enums: 
-    talk: # モデル名
+    contact: # モデル名
       contributor: # カラム名
         customer: '会員' # enumの値
         shop: '店舗' # enumの値
