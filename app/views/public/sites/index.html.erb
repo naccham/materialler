@@ -15,7 +15,11 @@
     <span id="bookmark_buttons_<%= site.id %>">
       <%= render "public/bookmarks/bookmark", site: site %>
     </span>
-    
+
     <%= link_to "コメント", site_path(site.id) %>
   </div>
+<% end %>
+
+<% @bookmark_ranks.each do |bookmark_rank| %>
+  <%= bookmark_rank.title %>
 <% end %>

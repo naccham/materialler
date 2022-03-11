@@ -1,16 +1,20 @@
 class Public::UsersController < ApplicationController
   
-  before_action :authenticate_user!,only: [:show]
+  before_action :authenticate_user!,only: [:show, :edit]
   
   def show
     @bookmarks = Bookmark.all
     @bookmarks = current_user.bookmarks
   end
+  
+  def edit
+    @user = User.find(params[:id])
+  end
 
   def update
     @user = User.find(params[:id])
     @user.update(user_params)
-    redirect_to user_path(@user.id)
+    redirect_to user_path(current_user.id)
   end
 
   private

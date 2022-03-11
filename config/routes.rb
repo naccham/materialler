@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     post 'contact/confirm', to: 'contacts#confirm', as: 'confirm'
     post 'contact/back', to: 'contact#back', as: 'back'
     get 'thanks', to: 'contact#thanks', as: 'thanks'
+    get 'about', to: 'site#about'
   end
 
 

@@ -23,7 +23,7 @@ body {
 
 .header {
   display: flex;
-  background-color: lightgray;
+  background-color: lightblue;
 }
 
 .menu-list {
@@ -33,4 +33,9 @@ body {
 
 .menu-item {
   margin: 10px;
+}
+
+.footer {
+  background-color: lightblue;
+  padding: 10px;
 }
