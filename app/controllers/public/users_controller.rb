@@ -3,7 +3,7 @@ class Public::UsersController < ApplicationController
   before_action :authenticate_user!,only: [:show, :edit]
   
   def show
-    @bookmarks = Bookmark.all
+    @thumbnail = "http://capture.heartrails.com/170x100/shorten?"
     @bookmarks = current_user.bookmarks
   end
   

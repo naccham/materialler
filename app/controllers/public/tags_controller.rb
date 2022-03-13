@@ -4,9 +4,9 @@ class Public::TagsController < ApplicationController
   end
   
   def show
+    @thumbnail = "http://capture.heartrails.com/170x100/shorten?"
     @tag = Tag.find(params[:id])
     @sites = Site.all
-    
   end
   
  def search
