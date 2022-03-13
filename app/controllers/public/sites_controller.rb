@@ -13,11 +13,7 @@ class Public::SitesController < ApplicationController
   end
 
   def search
-    if params[:title].present?
-      @sites = Site.where('title LIKE ?', "%#{params[:title]}%")
-    else
-      @sites = Site.none
-    end
+    @sites = Site.search(params[:title])
   end
 
 end

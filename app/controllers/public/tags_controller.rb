@@ -6,6 +6,7 @@ class Public::TagsController < ApplicationController
   def show
     @tag = Tag.find(params[:id])
     @sites = Site.all
+    
   end
   
  def search

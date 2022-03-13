@@ -1,7 +1,12 @@
 <h1><%= @tag.name %></h1>
 
+<%= form_tag(controller: "public/tags", action: "show") do %>
+  <%= select_tag("選択してください", options_for_select(["新着順","ブックマーク数が多い",""])) %>
+  <%= submit_tag("検索") %>
+<% end %>
 
-<h2>タグ検索結果</h2><%= @tag.sites.count %>サイト見つかりました
+
+<h2>タグ検索結果</h2><%= @tag.sites.count %>件
 <% @tag.sites.each do |site| %>
   <div>
     <%= image_tag "http://capture.heartrails.com/170x100/shorten?" + site.url %>
