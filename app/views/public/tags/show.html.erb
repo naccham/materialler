@@ -1,7 +1,7 @@
 <h1><%= @tag.name %></h1>
 
 <%= form_tag(controller: "public/tags", action: "show") do %>
-  <%= select_tag("選択してください", options_for_select(["新着順","ブックマーク数が多い",""])) %>
+  <%= select_tag("選択してください", options_for_select(["新しい順","古い順","ブックマーク数が多い順","ブックマークが少ない順"])) %>
   <%= submit_tag("検索") %>
 <% end %>
 
