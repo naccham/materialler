@@ -13,9 +13,11 @@
 </span>
 
 <!--コメントフォーム-->
+<% if user_signed_in? %>
 <div class="new-comment">
   <%= render 'public/comments/form', site: @site, comment: @comment %>
 </div>
+<% end %>
 
 <!--コメント一覧部分-->
 <div id="comments_area">
