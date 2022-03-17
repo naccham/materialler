@@ -4,14 +4,3 @@
 <%= render "public/sites/list", sites: @sites, thumbnail: @thumbnail %>
 
 
-<h2>ランキング</h2>
-<% @bookmark_ranks.each do |bookmark_rank| %>
-  <span><%= image_tag @thumbnail + bookmark_rank.url %></span>
-  <%= link_to bookmark_rank.url do %>
-    <%= bookmark_rank.title %>
-  <% end %>
-  <span id="bookmark_buttons_<%= bookmark_rank.id %>">
-      <%= render "public/bookmarks/bookmark", site: bookmark_rank, thumbnail: @thumbnail %>
-    </span>
-  <%= link_to "コメント", site_path(bookmark_rank.id) %>
-<% end %>

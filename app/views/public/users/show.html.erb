@@ -1,9 +1,10 @@
-<h1>マイページ</h1>
-
-<%= link_to "プロフィール編集", edit_user_path(current_user.id) %>
-<%= link_to "ブックマーク", user_path(current_user.id) %>
-<%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-
+<div>
+  <h1>マイページ</h1>
+  <%= link_to "プロフィール編集", edit_user_path(current_user.id) %>
+  <%= link_to "ブックマーク", user_path(current_user.id) %>
+  <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+  <%= link_to "退会する", user_confirm_path %>
+</div>
 <div>
   <h2>ブックマーク一覧</h2>
   <% @bookmarks.each do |bookmark| %>

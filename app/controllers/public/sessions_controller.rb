@@ -3,6 +3,17 @@
 class Public::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
 
+  protected
+
+  def reject_user
+    @user = User.find_by(email: params[:email])
+    if @user
+      if @user.valid_password?(params[:email][:password]) && (@user.active == false)
+        redirect_to new_user_session_path
+      end
+    end
+  end
+
   # GET /resource/sign_in
   # def new
   #   super

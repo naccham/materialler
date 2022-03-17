@@ -10,4 +10,8 @@ class User < ApplicationRecord
   def bookmarked_by?(user)
     bookmarks.where(user_id: user.id).exists?
   end
+  
+  def active_for_authentication?
+    super && (active == true)
+  end
 end

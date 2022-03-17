@@ -1,11 +1,25 @@
 <div class="container">
-  <div class="about">
-    <h1>About</h1>
-    <p>このサイトについての説明このサイトについての説明このサイトについての説明</p>
-    <p>このサイトについての説明このサイトについての説明このサイトについての説明</p>
-  </div>
   
   <div class="ranking">
+    <h2>ランキング</h2>
     
+<% @bookmark_ranks.each do |bookmark_rank| %>
+  <div>
+    <span><%= image_tag @thumbnail + bookmark_rank.url %></span>
+    <%= link_to bookmark_rank.url do %>
+      <%= bookmark_rank.title %>
+    <% end %>
+    <%= bookmark_rank.introduce %>
+    <% bookmark_rank.tags.each do |tag| %>
+      <span style="padding:4px;background-color:lightgray;border-radius: 4px;"><%= tag.name %></span>
+    <% end %>
+    
+    <span id="bookmark_buttons_<%= bookmark_rank.id %>">
+        <%= render "public/bookmarks/bookmark", site: bookmark_rank, thumbnail: @thumbnail %>
+      </span>
+    <%= link_to "コメント", site_path(bookmark_rank.id) %>
+    <% end %>
+  </div>
+
   </div>
 </div>
