@@ -1,28 +1,36 @@
-<div>
-  <h1>マイページ</h1>
-  <%= link_to "プロフィール編集", edit_user_path(current_user.id) %>
-  <%= link_to "ブックマーク", user_path(current_user.id) %>
-  <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-  <%= link_to "退会する", user_confirm_path %>
-</div>
-<div>
-  <h2>ブックマーク一覧</h2>
-  <% @bookmarks.each do |bookmark| %>
-    <div>
-      <%= image_tag "http://capture.heartrails.com/170x100/shorten?" + bookmark.site.url %>
-      <%= link_to bookmark.site.url do %>
-        <%= bookmark.site.title %>
-      <% end %>
+<div class="">
 
-      <!--ブックマーク機能-->
-      <span id="bookmark_buttons_<%= bookmark.site.id %>">
-        <%= render "public/bookmarks/bookmark", site: bookmark.site %>
-      </span>
+  <div class="mypage-list">
+    <h1>マイページ</h1>
 
-      <%= bookmark.site.introduce %>
-      <% bookmark.site.tags.each do |tag| %>
-        <span style="padding:4px;background-color:lightgray;border-radius: 4px;"><%= tag.name %></span>
-      <% end %>
-    </div>
-  <% end %>
+    <ul>
+      <li><%= link_to "プロフィール編集", edit_user_path(current_user.id) %></li>
+      <li><%= link_to "ブックマーク", user_path(current_user.id) %></li>
+      <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+      <li><%= link_to "退会する", user_confirm_path %></li>
+    </ul>
+  </div>
+
+  <div class="bookmark-list">
+    <h2>ブックマーク一覧</h2>
+    <% @bookmarks.each do |bookmark| %>
+      <div>
+        <%= image_tag "http://capture.heartrails.com/170x100/shorten?" + bookmark.site.url %>
+        <%= link_to bookmark.site.url do %>
+          <%= bookmark.site.title %>
+        <% end %>
+
+        <!--ブックマーク機能-->
+        <span id="bookmark_buttons_<%= bookmark.site.id %>">
+          <%= render "public/bookmarks/bookmark", site: bookmark.site %>
+        </span>
+
+        <%= bookmark.site.introduce %>
+        <% bookmark.site.tags.each do |tag| %>
+          <span style="padding:4px;background-color:lightgray;border-radius: 4px;"><%= tag.name %></span>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
 </div>

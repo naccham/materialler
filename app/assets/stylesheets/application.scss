@@ -16,9 +16,14 @@
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
 
-body {
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+.main {
+  width: 1200px;
 }
 
 .header {
@@ -33,6 +38,10 @@ body {
 
 .menu-item {
   margin: 10px;
+}
+
+.search-form {
+
 }
 
 .footer {
