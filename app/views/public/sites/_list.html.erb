@@ -1,6 +1,10 @@
 <% sites.each do |site| %>
   <div>
-    <span><%= image_tag thumbnail + site.url %></span>
+    <span>
+      <%= link_to site.url do %>
+        <%= image_tag thumbnail + site.url %>
+      <% end %>
+    </span>
     <%= link_to site.url do %>
       <%= site.title %>
     <% end %>

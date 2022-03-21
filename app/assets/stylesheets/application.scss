@@ -23,10 +23,15 @@
 }
 
 .main {
-  width: 1200px;
+  width: 960px;
+}
+
+.wrap {
+  display: flex;
 }
 
 .header {
+  width: 345px;
   display: flex;
   background-color: lightblue;
 }
