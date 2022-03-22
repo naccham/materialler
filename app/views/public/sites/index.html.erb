@@ -2,4 +2,4 @@
 
 <%= render "public/sites/list", sites: @sites, thumbnail: @thumbnail %>
 
-
+<%= will_paginate @sites, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>

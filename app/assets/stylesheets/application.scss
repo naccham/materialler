@@ -22,16 +22,16 @@
   box-sizing: border-box;
 }
 
-.main {
-  width: 960px;
+.all-wrap {
+  margin: auto;
+  width: 100%;
 }
 
-.wrap {
-  display: flex;
+.main {
+
 }
 
 .header {
-  width: 345px;
   display: flex;
   background-color: lightblue;
 }
@@ -49,7 +49,27 @@
 
 }
 
+.mypage {
+  display: flex;
+  position: left;
+}
+
 .footer {
+  width: 100%;
   background-color: lightblue;
   padding: 10px;
+}
+
+.footer-wrap {
+  display: flex;
+  justify-content: center
+}
+
+.footer ul {
+  display: flex;
+  list-style: none;
+}
+
+.footer ul li {
+  margin: 20px;
 }

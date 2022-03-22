@@ -4,62 +4,66 @@
     <title>Materialler</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://kit.fontawesome.com/910ae00410.js" crossorigin="anonymous"></script>
   </head>
 
   <body>
-    <div class="header">
-      <div class="">
-        <div class="logo">
-          <%= link_to 'materialler', root_path, class: '' %>
-        </div>
-  
-        <div class="search-form">
-        <%= form_with url: search_sites_path, method: :get, local: true do |f| %>
-          <%= f.text_field :title %>
-          <%= f.submit "検索", class: "fa-solid fa-magnifying-glass" %>
-        <% end %>
-        </div>
-  
+    <div class="all-wrap">
+      <div class="header">
         <div class="header-wrap">
-          <% if admin_signed_in? %>
-          <ul class="menu-list">
-            <li class="menu-item"><%= link_to 'サイト一覧', admin_sites_path, class: '' %></li>
-            <li class="menu-item"><%= link_to 'タグ一覧', admin_tags_path, class: '' %></li>
-            <li class="menu-item"><%= link_to '会員一覧', admin_users_path, class: '' %></li>
-            <li class="menu-item"><%= link_to '管理者ログアウト', destroy_admin_session_path, method: :delete ,class: '' %></li>
-          </ul>
-  
-          <% elsif user_signed_in? %>
-          <ul class="menu-list">
-            <li class="menu-item"><%= link_to 'サイト一覧', sites_path, class: '' %></li>
-            <li class="menu-item"><%= link_to 'タグ一覧', tags_path, class: '' %></li>
-            <li class="menu-item"><%= link_to 'マイページ', user_path(current_user.id), class: '' %></li>
-          </ul>
-  
-          <% else %>
-          <nav class="global">
+          <div class="header-logo">
+            <%= link_to 'materialler', root_path, class: '' %>
+          </div>
+          <div class="search-form">
+          <%= form_with url: search_sites_path, method: :get, local: true do |f| %>
+            <%= f.text_field :title %>
+            <%= f.submit "検索", class: "fa-solid fa-magnifying-glass" %>
+          <% end %>
+          </div>
+          <div class="header-wrap">
+            <% if admin_signed_in? %>
+            <ul class="menu-list">
+              <li class="menu-item"><%= link_to 'サイト一覧', admin_sites_path, class: '' %></li>
+              <li class="menu-item"><%= link_to 'タグ一覧', admin_tags_path, class: '' %></li>
+              <li class="menu-item"><%= link_to '会員一覧', admin_users_path, class: '' %></li>
+              <li class="menu-item"><%= link_to '管理者ログアウト', destroy_admin_session_path, method: :delete ,class: '' %></li>
+            </ul>
+            <% elsif user_signed_in? %>
             <ul class="menu-list">
               <li class="menu-item"><%= link_to 'サイト一覧', sites_path, class: '' %></li>
               <li class="menu-item"><%= link_to 'タグ一覧', tags_path, class: '' %></li>
-              <li class="menu-item"><%= link_to '管理者ログイン', new_admin_session_path, class: '' %></li>
-              <li class="menu-item"><%= link_to '会員ログイン', new_user_session_path, class: '' %></li>
             </ul>
-          </nav>
-          <% end %>
+            <div class="mypage">
+              <%= link_to 'マイページ', user_path(current_user.id), class: '' %>
+            </div>
+            <% else %>
+            <nav class="global">
+              <ul class="menu-list">
+                <li class="menu-item"><%= link_to 'サイト一覧', sites_path, class: '' %></li>
+                <li class="menu-item"><%= link_to 'タグ一覧', tags_path, class: '' %></li>
+                <li class="menu-item"><%= link_to '管理者ログイン', new_admin_session_path, class: '' %></li>
+                <li class="menu-item"><%= link_to '会員ログイン', new_user_session_path, class: '' %></li>
+              </ul>
+            </nav>
+            <% end %>
+          </div>
         </div>
       </div>
-      <div class="main">
-        <%= yield %>
-      </div>
-        <%= link_to "materiallerについて", about_path %>
-        <%= link_to "お問合せ", new_contact_path %>
+    
+    <div class="main">
+      <%= yield %>
+    </div>
+    
+    <div class="footer">
+      <div class="footer-wrap">
+        <ul>
+          <li><%= link_to "materiallerについて", about_path, class: ''  %></li>
+          <li><%= link_to "お問合せ", new_contact_path, class: ''  %></li>
+        </ul>
       </div>
     </div>
+  </div>
   </body>
-  
 </html>

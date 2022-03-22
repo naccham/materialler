@@ -1,0 +1,31 @@
+// Place all the styles related to the user/sites controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.category {
+  display: flex;
+  width: 100%;
+}
+
+.category-wrap {
+  width: 160px;
+  height: 160px;
+  background-color: lightblue;
+  margin-right: 20px;
+  
+  position: relative;
+}
+
+.category-pic {
+  width: 100%;
+  position: absolute;
+  text-align: center;
+  bottom: 40px;
+}
+
+.category-wrap p {
+  width: 100%;
+  position: absolute;
+  bottom: 10px;
+  text-align: center;
+}

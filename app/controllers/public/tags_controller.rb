@@ -2,13 +2,15 @@ class Public::TagsController < ApplicationController
   def index
     @tags = Tag.all
   end
-  
+
   def show
-    @thumbnail = "http://capture.heartrails.com/170x100/shorten?"
+    @thumbnail = "http://capture.heartrails.com/large?"
     @tag = Tag.find(params[:id])
-    @sites = Site.all
+    @tag.sites = Site.paginate(page: params[:page], per_page: 10)
+    @tag_one = @tag.sites
+
   end
-  
+
  def search
     if params[:title].present?
       @sites = Site.where('title LIKE ?', "%#{params[:title]}%")

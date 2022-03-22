@@ -1,32 +1,60 @@
 <div class="container">
-  
+
   <div class="search-form">
     <%= form_with url: search_sites_path, method: :get, local: true do |f| %>
-        <%= f.text_field :title %>
-        <%= f.submit "検索", class: "fa-solid fa-magnifying-glass" %>
+      <%= f.text_field :title %>
+      <%= f.submit "検索", class: "fa-solid fa-magnifying-glass" %>
     <% end %>
- </div>
-  
+   </div>
+
+   <div class="category">
+     <div class="category-wrap">
+       <div class="category-pic"><%= image_tag 'pic.png' %></div>
+       <p><%= @tag1.name %></p>
+     </div>
+     <div class="category-wrap">
+       <div class="category-pic"><%= image_tag 'illust.png' %></div>
+       <p><%= @tag2.name %></p>
+     </div>
+     <div class="category-wrap">
+       <div class="category-pic"><%= image_tag 'icon.png' %></div>
+       <p><%= @tag3.name %></p>
+     </div>
+     <div class="category-wrap">
+       <div class="category-pic"><%= image_tag 'silhouette.png' %></div>
+       <p><%= @tag7.name %></p>
+     </div>
+     <div class="category-wrap">
+       <div class="category-pic"><%= image_tag 'texture.png' %></div>
+       <p><%= @tag8.name %></p>
+     </div>
+     <div class="category-wrap">
+       <div class="category-pic"><%= image_tag 'pattern.png' %></div>
+       <p><%= @tag9.name %></p>
+     </div>
+
+   </div>
+
   <div class="ranking">
     <h2>ランキング</h2>
-    
-<% @bookmark_ranks.each do |bookmark_rank| %>
-  <div>
-    <span><%= image_tag @thumbnail + bookmark_rank.url %></span>
-    <%= link_to bookmark_rank.url do %>
-      <%= bookmark_rank.title %>
-    <% end %>
-    <%= bookmark_rank.introduce %>
-    <% bookmark_rank.tags.each do |tag| %>
-      <span style="padding:4px;background-color:lightgray;border-radius: 4px;"><%= tag.name %></span>
-    <% end %>
-    
-    <span id="bookmark_buttons_<%= bookmark_rank.id %>">
-        <%= render "public/bookmarks/bookmark", site: bookmark_rank, thumbnail: @thumbnail %>
-      </span>
-    <%= link_to "コメント", site_path(bookmark_rank.id) %>
-    <% end %>
-  </div>
+
+    <% @bookmark_ranks.each do |bookmark_rank| %>
+    <div>
+      <span><%= image_tag @thumbnail + bookmark_rank.url %></span>
+      <%= link_to bookmark_rank.url do %>
+        <%= bookmark_rank.title %>
+      <% end %>
+      <%= bookmark_rank.introduce %>
+      <% bookmark_rank.tags.each do |tag| %>
+        <span style="padding:4px;background-color:lightgray;border-radius: 4px;"><%= tag.name %></span>
+      <% end %>
+
+      <span id="bookmark_buttons_<%= bookmark_rank.id %>">
+          <%= render "public/bookmarks/bookmark", site: bookmark_rank, thumbnail: @thumbnail %>
+        </span>
+      <%= link_to "コメント", site_path(bookmark_rank.id) %>
+      <% end %>
+    </div>
 
   </div>
 </div>
