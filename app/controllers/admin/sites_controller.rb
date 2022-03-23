@@ -1,18 +1,19 @@
 class Admin::SitesController < ApplicationController
 
   def index
+    @thumbnail = "http://capture.heartrails.com/170x100/shorten?"
     @site = Site.new
     @sites = Site.all
     @posts = params[:tag_id].present? ? Site.find(params[:tag_id]).tags : Site.all
   end
 
   def create
-    if @site = Site.create(site_params)
-    end
+    @site = Site.create(site_params)
     redirect_to admin_sites_path
   end
 
   def show
+    @thumbnail = "http://capture.heartrails.com/huge?"
     @site = Site.find(params[:id])
   end
 
@@ -38,6 +39,6 @@ class Admin::SitesController < ApplicationController
   private
 
   def site_params
-    params.require(:site).permit(:title, :introduce, :url, :tag_id, tag_ids: [])
+    params.require(:site).permit(:title, :introduce, :url, tag_ids: [])
   end
 end

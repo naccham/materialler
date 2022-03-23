@@ -1,9 +1,27 @@
-<div>
-  <h1>サイト詳細</h1>
-  <%= @site.title %>
-  <%= @site.url %>
-  <% @site.tags.each do |tag| %>
-    <span style="padding:4px;background-color:lightgray;border-radius: 4px;"><%= tag.name %></span>
-  <% end %>
-  <%= @site.introduce %>
+
+
+
+<div class="admin-site-show">
+
+  <div class="site">
+    <h2 class="site-title"><%= @site.title %></h2>
+
+    <div class="site-thumbnail">
+      <%= link_to @site.url do %>
+          <%= image_tag @thumbnail + @site.url %>
+      <% end %>
+    </div>
+
+    <p class="site-introduce">
+      <%= @site.introduce %>
+    </p>
+
+    <!--カテゴリ-->
+    <div class="site-category">
+    <% @site.tags.each do |tag| %>
+      <span style="padding:4px;background-color:lightgray;border-radius: 4px;"><%= tag.name %></span>
+    <% end %>
+    </div>
+
+  </div>
 </div>

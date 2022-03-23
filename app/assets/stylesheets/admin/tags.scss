@@ -1,3 +1,37 @@
 // Place all the styles related to the admin/tags controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.admin-tag-title {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.admin-tag-new {
+  display: flex;
+  justify-content: center;
+  margin: 40px 0;
+}
+
+.admin-tag-new-form {
+  width: 300px;
+}
+
+.admin-tag-lists {
+  display: flex;
+  justify-content: center;
+  margin: 40px 0;
+}
+
+.admin-tag-lists-wrap {
+  width: 300px;
+}
+
+.admin-tag-list {
+  display: flex;
+  justify-content: space-between;
+}
+
+.admin-tag-list:nth-child(odd) {
+  background-color: #eee;
+}

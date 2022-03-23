@@ -1,41 +1,63 @@
-<h1>サイト一覧・新規登録</h1>
 
-<div>
-  <%= form_with model: @site, url: admin_sites_path, local:true do |f| %>
-      <%= f.label :title, 'サイト名' %>
-      <%= f.text_field :title %>
-
-      <%= f.label :url, 'URL' %>
-      <%= f.text_field :url %>
-
-      <%= f.label :introduce, '説明文' %>
-      <%= f.text_area :introduce %>
-      <div>
-        <%= f.label :tag, 'タグ' %>
-        <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) %>
+  <div class="admin-site-form">
+    <div class="admin-site-form-with">
+    <h2>サイト新規登録</h1>
+    <%= form_with model: @site, url: admin_sites_path, local:true do |f| %>
+      <div class="admin-site-form-with-field">
+        <%= f.label :title, 'サイト名' %>
+        <%= f.text_field :title, :size=>"120" %>
       </div>
 
-      <%= f.submit '作成' %>
-  <% end %>
-</div>
+      <div class="admin-site-form-with-field">
+        <%= f.label :url, 'URL' %>
+        <%= f.text_field :url, :size=>"120" %>
+      </div>
 
-<div class="site-lists">
-  <h2>サイト一覧</h2>
-  <% @sites.each do |site| %>
-    <div>
-      <span><%= image_tag "http://capture.heartrails.com/170x100/shorten?" + site.url %></span>
-      <%= site.title %>
-      <%= link_to site.url do %>
-        <i class="fas fa-external-link-alt"></i>
-      <% end %>
-      <%= site.url %>
-      <%= site.introduce %>
-      <% site.tags.each do |tag| %>
-        <span style="padding:4px;background-color:lightgray;border-radius: 4px;"><%= tag.name %></span>
-      <% end %>
-      <%= link_to "詳細", admin_site_path(site.id), class: '' %>
-      <%= link_to "編集", edit_admin_site_path(site.id), class: '' %>
-      <%= link_to "削除", admin_site_path(site.id), method: :delete  %>
+      <div class="admin-site-form-with-field">
+        <%= f.label :introduce, '説明文' %>
+        <%= f.text_area :introduce, :size=>"112x3" %>
+      </div>
+
+      <div class="admin-site-form-with-field">
+        <%= f.label :tag, 'タグ', class: "" %>
+        <span style="padding:4px;background-color:lightgray;border-radius: 4px;">
+          <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) %>
+        </span>
+      </div>
+
+      <div class="admin-site-form-with-btn">
+        <%= f.submit 'サイトを作成', class: "admin-site-btn"  %>
+      </div>
+    <% end %>
     </div>
-  <% end %>
+  </div>
+
+<!--サイト一覧-->
+<div class="admin-main-site">
+  <div class="admin-sites">
+    <h2>サイト一覧</h2>
+    <% @sites.each do |site| %>
+      <div class="admin-site">
+        <span class="admin-site-image"><%= image_tag @thumbnail + site.url %></span>
+        <div class="admin-site-text">
+          <p>
+            <span class="admin-site-text-title"><%= site.title %></span>
+            <%= link_to site.url do %>
+              <i class="fas fa-external-link-alt"></i>
+            <% end %>
+          </p>
+          <p><%= site.url %></p>
+          <p><%= site.introduce %></p>
+          <% site.tags.each do |tag| %>
+            <span style="padding:4px;background-color:lightgray;border-radius: 4px;"><%= tag.name %></span>
+          <% end %>
+          <div class="admin-site-edit">
+            <%= link_to "詳細", admin_site_path(site.id), class: 'id-btn' %>
+            <%= link_to "編集", edit_admin_site_path(site.id), class: 'id-btn' %>
+            <%= link_to "削除", admin_site_path(site.id), method: :delete, class: 'id-btn'  %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>

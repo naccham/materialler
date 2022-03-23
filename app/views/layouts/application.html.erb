@@ -16,11 +16,6 @@
           <div class="header-logo">
             <%= link_to 'materialler', root_path, class: '' %>
           </div>
-          <div class="search-form">
-          <%= form_with url: search_sites_path, method: :get, local: true do |f| %>
-            <%= f.text_field :title %>
-            <%= f.submit "検索", class: "fa-solid fa-magnifying-glass" %>
-          <% end %>
           </div>
           <div class="header-wrap">
             <% if admin_signed_in? %>
@@ -28,9 +23,15 @@
               <li class="menu-item"><%= link_to 'サイト一覧', admin_sites_path, class: '' %></li>
               <li class="menu-item"><%= link_to 'タグ一覧', admin_tags_path, class: '' %></li>
               <li class="menu-item"><%= link_to '会員一覧', admin_users_path, class: '' %></li>
-              <li class="menu-item"><%= link_to '管理者ログアウト', destroy_admin_session_path, method: :delete ,class: '' %></li>
             </ul>
+            <div class="admin-logout"><%= link_to '管理者ログアウト', destroy_admin_session_path, method: :delete ,class: '' %></div>
             <% elsif user_signed_in? %>
+            <div class="search-form">
+              <%= form_with url: search_sites_path, method: :get, local: true do |f| %>
+                <%= f.text_field :title %>
+                <%= f.submit "検索", class: "fa-solid fa-magnifying-glass" %>
+              <% end %>
+            </div>
             <div class="site-list">
               <%= link_to 'サイト一覧', sites_path, class: '' %>
             </div>
@@ -38,6 +39,11 @@
               <%= link_to 'マイページ', user_path(current_user.id), class: '' %>
             </div>
             <% else %>
+            <div class="search-form">
+            <%= form_with url: search_sites_path, method: :get, local: true do |f| %>
+              <%= f.text_field :title %>
+              <%= f.submit "検索", class: "fa-solid fa-magnifying-glass" %>
+            <% end %>
             <nav class="global">
               <ul class="menu-list">
                 <li class="menu-item"><%= link_to 'サイト一覧', sites_path, class: '' %></li>
@@ -45,16 +51,17 @@
                 <li class="menu-item"><%= link_to '管理者ログイン', new_admin_session_path, class: '' %></li>
                 <li class="menu-item"><%= link_to '会員ログイン', new_user_session_path, class: '' %></li>
               </ul>
+              <div class="admin-login"><%= link_to '会員ログイン', new_user_session_path, class: '' %></div>
             </nav>
             <% end %>
           </div>
         </div>
       </div>
-    
+
       <div class="main">
         <%= yield %>
       </div>
-    
+
       <div class="footer">
         <div class="footer-wrap">
           <ul>
@@ -63,8 +70,8 @@
           </ul>
         </div>
       </div>
-      
+
     </div>
-    
+
   </body>
 </html>
