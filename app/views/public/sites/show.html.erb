@@ -1,16 +1,37 @@
-<h1>サイト詳細</h1>
+<div class="sites">
 
-<span><%= image_tag @thumbnail + @site.url %></span>
-<%= @site.title %>
-<%= @site.introduce %>
-<% @site.tags.each do |tag| %>
-  <span style="padding:4px;background-color:lightgray;border-radius: 4px;"><%= tag.name %></span>
-<% end %>
+  <div class="site">
+    <%= link_to @site.url do %>
+      <h2 class="site-title"><%= @site.title %></h2>
+    <% end %>
 
-<!--ブックマーク-->
-<span id="bookmark_buttons_<%= @site.id %>">
-  <%= render "public/bookmarks/bookmark", site: @site %>
-</span>
+    <div class="site-thumbnail">
+      <%= link_to @site.url do %>
+          <%= image_tag @thumbnail + @site.url %>
+      <% end %>
+    </div>
+
+    <!--ブックマーク機能-->
+    <div class="site-bookmark">
+      <span id="bookmark_buttons_<%= @site.id %>">
+        <%= render "public/bookmarks/bookmark", site: @site %>
+      </span>
+    </div>
+
+    <!--カテゴリ-->
+    <div class="site-category">
+    <% @site.tags.each do |tag| %>
+      <span style="padding:4px;background-color:lightgray;border-radius: 4px;"><%= tag.name %></span>
+    <% end %>
+    </div>
+
+    <p class="site-introduce">
+      <%= @site.introduce %>
+    </p>
+
+    <%= link_to ">#{@site.comments.count}comment", site_path(@site.id), class: "site-comment" %>
+  </div>
+</div>
 
 <!--コメントフォーム-->
 <% if user_signed_in? %>

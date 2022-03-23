@@ -1,13 +1,12 @@
-<h1><%= @tag_one.name %></h1>
-
 <%= form_tag(controller: "public/tags", action: "show") do %>
   <%= select_tag("選択してください", options_for_select(["新しい順","古い順","ブックマーク数が多い順","ブックマークが少ない順"])) %>
   <%= submit_tag("検索") %>
 <% end %>
 
 
-<h2>タグ検索結果</h2><%= @tag_one.count %>件
+<h2>タグ検索結果</h2>
+<p><%= @tag.count %>件</p>
 
-<%= render "public/sites/list", sites: @tag_one, thumbnail: @thumbnail %>
+<%= render "public/sites/list", sites: @tag, thumbnail: @thumbnail %>
 
-<%= will_paginate @tag_one, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
+<%= will_paginate @tag, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>

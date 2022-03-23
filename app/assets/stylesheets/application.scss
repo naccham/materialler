@@ -20,20 +20,25 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  text-decoration: none;
 }
 
 .all-wrap {
-  margin: auto;
-  width: 100%;
-}
-
-.main {
-
 }
 
 .header {
+  width: 100%;
   display: flex;
   background-color: lightblue;
+}
+
+.main {
+  margin: 0, auto;
+  display: inline-block;
+}
+
+.title-text {
+  text-align: center;
 }
 
 .menu-list {
@@ -49,9 +54,13 @@
 
 }
 
+.site-list {
+  display: inline-block;
+}
+
 .mypage {
-  display: flex;
-  position: left;
+  display: inline-block;
+  float: right;
 }
 
 .footer {

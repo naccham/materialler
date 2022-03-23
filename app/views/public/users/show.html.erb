@@ -13,24 +13,8 @@
 
   <div class="bookmark-list">
     <h2>ブックマーク一覧</h2>
-    <% @bookmarks.each do |bookmark| %>
-      <div>
-        <%= image_tag "http://capture.heartrails.com/170x100/shorten?" + bookmark.site.url %>
-        <%= link_to bookmark.site.url do %>
-          <%= bookmark.site.title %>
-        <% end %>
-
-        <!--ブックマーク機能-->
-        <span id="bookmark_buttons_<%= bookmark.site.id %>">
-          <%= render "public/bookmarks/bookmark", site: bookmark.site %>
-        </span>
-
-        <%= bookmark.site.introduce %>
-        <% bookmark.site.tags.each do |tag| %>
-          <span style="padding:4px;background-color:lightgray;border-radius: 4px;"><%= tag.name %></span>
-        <% end %>
-      </div>
-    <% end %>
+    <%= render "public/sites/list", sites: @sites, thumbnail: @thumbnail %>
+    <%= will_paginate @sites, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
   </div>
 
 </div>

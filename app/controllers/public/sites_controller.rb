@@ -13,7 +13,9 @@ class Public::SitesController < ApplicationController
   end
 
   def search
+    @thumbnail = "http://capture.heartrails.com/huge?"
     @sites = Site.search(params[:title])
+    @sites = @sites.paginate(page: params[:page], per_page: 10)
   end
 
 end

@@ -4,6 +4,8 @@ class Public::BookmarksController < ApplicationController
     @site = Site.find(params[:site_id])
     bookmark = current_user.bookmarks.new(site_id: @site.id)
     bookmark.save
+    @site.bookmark_id = bookmark.id
+    @site.save
     # redirect_to sites_path
   end
 

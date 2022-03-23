@@ -20,7 +20,7 @@ Rails.application.routes.draw do
       resource :bookmarks, only: [:create, :destroy]
     end
     resources :users, only: [:show, :edit, :update]
-    resources :tags, only: [:show, :index] do
+    resources :tags, only: [:show] do
       get :search, on: :collection
     end
     resources :contacts, only: [:new, :create]

@@ -31,10 +31,9 @@
               <li class="menu-item"><%= link_to '管理者ログアウト', destroy_admin_session_path, method: :delete ,class: '' %></li>
             </ul>
             <% elsif user_signed_in? %>
-            <ul class="menu-list">
-              <li class="menu-item"><%= link_to 'サイト一覧', sites_path, class: '' %></li>
-              <li class="menu-item"><%= link_to 'タグ一覧', tags_path, class: '' %></li>
-            </ul>
+            <div class="site-list">
+              <%= link_to 'サイト一覧', sites_path, class: '' %>
+            </div>
             <div class="mypage">
               <%= link_to 'マイページ', user_path(current_user.id), class: '' %>
             </div>
@@ -42,7 +41,7 @@
             <nav class="global">
               <ul class="menu-list">
                 <li class="menu-item"><%= link_to 'サイト一覧', sites_path, class: '' %></li>
-                <li class="menu-item"><%= link_to 'タグ一覧', tags_path, class: '' %></li>
+                <li class="menu-item"><%#= link_to 'タグ一覧', tags_path, class: '' %></li>
                 <li class="menu-item"><%= link_to '管理者ログイン', new_admin_session_path, class: '' %></li>
                 <li class="menu-item"><%= link_to '会員ログイン', new_user_session_path, class: '' %></li>
               </ul>
@@ -52,18 +51,20 @@
         </div>
       </div>
     
-    <div class="main">
-      <%= yield %>
+      <div class="main">
+        <%= yield %>
+      </div>
+    
+      <div class="footer">
+        <div class="footer-wrap">
+          <ul>
+            <li><%= link_to "materiallerについて", about_path, class: ''  %></li>
+            <li><%= link_to "お問合せ", new_contact_path, class: ''  %></li>
+          </ul>
+        </div>
+      </div>
+      
     </div>
     
-    <div class="footer">
-      <div class="footer-wrap">
-        <ul>
-          <li><%= link_to "materiallerについて", about_path, class: ''  %></li>
-          <li><%= link_to "お問合せ", new_contact_path, class: ''  %></li>
-        </ul>
-      </div>
-    </div>
-  </div>
   </body>
 </html>

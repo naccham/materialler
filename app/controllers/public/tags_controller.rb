@@ -1,13 +1,10 @@
 class Public::TagsController < ApplicationController
-  def index
-    @tags = Tag.all
-  end
 
   def show
-    @thumbnail = "http://capture.heartrails.com/large?"
+    @thumbnail = "http://capture.heartrails.com/huge?"
     @tag = Tag.find(params[:id])
-    @tag.sites = Site.paginate(page: params[:page], per_page: 10)
-    @tag_one = @tag.sites
+    @tag = @tag.sites.paginate(page: params[:page], per_page: 10)
+
 
   end
 
@@ -17,5 +14,5 @@ class Public::TagsController < ApplicationController
     else
       @sites = Site.none
     end
-  end
+ end
 end

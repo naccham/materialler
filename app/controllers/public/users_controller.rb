@@ -1,12 +1,15 @@
 class Public::UsersController < ApplicationController
-  
+
   before_action :authenticate_user!,only: [:show, :edit]
-  
+
   def show
-    @thumbnail = "http://capture.heartrails.com/170x100/shorten?"
-    @bookmarks = current_user.bookmarks
+    @thumbnail = "http://capture.heartrails.com/huge?"
+    # まずログイン中のユーザに該当するブックマークのidのみを配列で定義
+    bookmark_ids = Bookmark.where(user_id: current_user.id).pluck(:id)
+    # ブックマークのIDを元にサイトの検索をかける
+    @sites = Site.where(bookmark_id: bookmark_ids).paginate(page: params[:page], per_page: 10)
   end
-  
+
   def edit
     @user = User.find(params[:id])
   end
@@ -16,10 +19,10 @@ class Public::UsersController < ApplicationController
     @user.update(user_params)
     redirect_to user_path(current_user.id)
   end
-  
+
   def confirm
   end
-  
+
   def withdrawal
     @user = current_user
     @user.update(active: false)

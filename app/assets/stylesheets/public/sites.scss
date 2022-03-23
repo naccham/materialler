@@ -2,30 +2,32 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.category {
-  display: flex;
-  width: 100%;
+.sites {
+  width: 640px;
 }
 
-.category-wrap {
-  width: 160px;
-  height: 160px;
+.site {
+  margin-bottom: 60px;
   background-color: lightblue;
-  margin-right: 20px;
-  
-  position: relative;
 }
 
-.category-pic {
-  width: 100%;
-  position: absolute;
-  text-align: center;
-  bottom: 40px;
+.site-bookmark {
+  display: inline-block;
+  margin-top: 10px;
 }
 
-.category-wrap p {
-  width: 100%;
-  position: absolute;
-  bottom: 10px;
-  text-align: center;
+.site-category {
+  display: inline-block;
+  float: right;
+  margin-top: 10px;
+}
+
+.site-introduce {
+
+}
+
+.site-comment {
+  display: inline-block;
+  float: right;
+  color: lightgray;
 }

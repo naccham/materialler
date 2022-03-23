@@ -38,6 +38,6 @@ class Admin::SitesController < ApplicationController
   private
 
   def site_params
-    params.require(:site).permit(:title, :introduce, :url, tag_ids: [])
+    params.require(:site).permit(:title, :introduce, :url, :tag_id, tag_ids: [])
   end
 end
