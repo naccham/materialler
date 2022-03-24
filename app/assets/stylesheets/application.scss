@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
 
@@ -21,6 +22,11 @@
   padding: 0;
   box-sizing: border-box;
   text-decoration: none;
+  color: #2b546a;
+}
+
+body {
+  font-family: 游ゴシック体;
 }
 
 .all-wrap {
@@ -28,31 +34,45 @@
 
 .header {
   width: 100%;
-  display: flex;
+  height: 100px;
   background-color: lightblue;
 }
 
-.admin-logout {
-  display: inline-block;
-  float: fight;
+.header-wrap {
+  display: flex;
+  padding: 20px;
+
+}
+
+.header-logo {
+  font-size: 30px;
+}
+
+.mypage {
+  float: right;
 }
 
 .main {
   width: 100%;
-  margin: 0, auto;
+  display: flex;
+  justify-content: center;
 }
 
-.title-text {
-  text-align: center;
+.main-wrap {
+  width: 960px;
+}
+
+.menu-lists {
+  display: flex;
+  margin-left: 80px;
 }
 
 .menu-list {
-  display: flex;
-  list-style: none;
+  margin: 10px;
 }
 
-.menu-item {
-  margin: 10px;
+.menu-list:last-child {
+  margin-left: 80px;
 }
 
 .search-form {
@@ -64,8 +84,7 @@
 }
 
 .mypage {
-  display: inline-block;
-  float: right;
+
 }
 
 .footer {
@@ -86,4 +105,13 @@
 
 .footer ul li {
   margin: 20px;
+}
+
+.bookmark-count {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.bookmark-heart {
+  font-size: 1.2em;
 }

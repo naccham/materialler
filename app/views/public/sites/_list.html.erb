@@ -1,3 +1,4 @@
+<div class="part-sites">
 <div class="sites">
 <% sites.each do |site| %>
   <div class="site">
@@ -21,7 +22,9 @@
     <!--カテゴリ-->
     <div class="site-category">
     <% site.tags.each do |tag| %>
-      <span style="padding:4px;background-color:lightgray;border-radius: 4px;"><%= tag.name %></span>
+      <%= link_to tag_path(tag.id) do %>
+      <span style="padding:4px;border-radius: 4px;"><%= tag.name %></span>
+      <% end %>
     <% end %>
     </div>
 
@@ -33,4 +36,5 @@
   </div>
 <% end %>
 
+</div>
 </div>

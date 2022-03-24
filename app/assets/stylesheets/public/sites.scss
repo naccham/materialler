@@ -2,13 +2,18 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.part-sites {
+  display: flex;
+  justify-content: center;
+}
+
 .sites {
   width: 640px;
 }
 
 .site {
   margin-bottom: 60px;
-  background-color: lightblue;
+  // background-color: lightblue;
 }
 
 .site-bookmark {
@@ -20,14 +25,20 @@
   display: inline-block;
   float: right;
   margin-top: 10px;
+  color: white;
+}
+
+.site-category span {
+  background-color: #2b546a;
+  color: white;
 }
 
 .site-introduce {
-
+  font-size: 15px;
 }
 
 .site-comment {
   display: inline-block;
   float: right;
-  color: lightgray;
+  color: #8e8e8e;
 }

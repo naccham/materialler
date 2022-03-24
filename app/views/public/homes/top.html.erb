@@ -1,17 +1,22 @@
-<div class="container">
-
-  <div id="search-form">
-    <%= form_with url: search_sites_path, method: :get, local: true do |f| %>
-        <%= f.text_field :title, placeholder: "search", class: "sbox" %>
-        <%= f.submit "検索", class: "sbtn" %>
-    <% end %>
+<div class="top">
+  <div class="search-form-wrap">
+    <div id="search-form">
+      <%= form_with url: search_sites_path, method: :get, local: true do |f| %>
+          <%= f.text_field :title, placeholder: " search",  class: "sbox" %>
+          <%= f.submit "検索", class: "sbtn" %>
+      <% end %>
+    </div>
   </div>
 
   <h1 class="title-text">CATEGORY</h1>
-  <div class="category-wrap">
+
     <div class="categories">
         <div class="category">
-          <div class="category-pic"><%= image_tag 'pic.png' %></div>
+          <div class="category-pic">
+            <%= link_to tag_path(@tag1.id) do %>
+              <%= image_tag 'pic.png' %>
+            <% end %>
+          </div>
           <p>
             <%= link_to tag_path(@tag1.id) do %>
               <%= @tag1.name %>
@@ -19,7 +24,11 @@
           </p>
         </div>
         <div class="category">
-          <div class="category-pic"><%= image_tag 'illust.png' %></div>
+          <div class="category-pic">
+            <%= link_to tag_path(@tag2.id) do %>
+              <%= image_tag 'illust.png' %>
+            <% end %>
+          </div>
           <p>
             <%= link_to tag_path(@tag2.id) do %>
               <%= @tag2.name %>
@@ -27,7 +36,11 @@
           </p>
         </div>
         <div class="category">
-          <div class="category-pic"><%= image_tag 'icon.png' %></div>
+          <div class="category-pic">
+            <%= link_to tag_path(@tag3.id) do %>
+              <%= image_tag 'icon.png' %>
+            <% end %>
+          </div>
           <p>
             <%= link_to tag_path(@tag3.id) do %>
               <%= @tag3.name %>
@@ -35,7 +48,11 @@
           </p>
         </div>
         <div class="category">
-          <div class="category-pic"><%= image_tag 'silhouette.png' %></div>
+          <div class="category-pic">
+            <%= link_to tag_path(@tag7.id) do %>
+              <%= image_tag 'silhouette.png' %>
+            <% end %>
+          </div>
           <p>
             <%= link_to tag_path(@tag7.id) do %>
               <%= @tag7.name %>
@@ -43,19 +60,33 @@
           </p>
         </div>
         <div class="category">
-          <div class="category-pic"><%= image_tag 'texture.png' %></div>
-          <p><%= @tag8.name %></p>
+          <div class="category-pic">
+            <%= link_to tag_path(@tag8.id) do %>
+              <%= image_tag 'texture.png' %>
+            <% end %>
+          </div>
+          <p>
+            <%= link_to tag_path(@tag8.id) do %>
+              <%= @tag8.name %>
+            <% end %>
+          </p>
         </div>
         <div class="category">
-          <div class="category-pic"><%= image_tag 'pattern.png' %></div>
-          <p><%= @tag9.name %></p>
+          <div class="category-pic">
+            <%= link_to tag_path(@tag9.id) do %>
+              <%= image_tag 'pattern.png' %>
+            <% end %>
+          </div>
+          <p>
+            <%= link_to tag_path(@tag9.id) do %>
+              <%= @tag9.name %>
+            <% end %>
+          </p>
         </div>
     </div>
-  </div>
 
+  <h1 class="title-text">RANKING</h1>
   <div class="ranking">
-    <h1 class="title-text">RANKING</h1>
-
     <%= render "public/sites/list", sites: @sites, thumbnail: @thumbnail %>
 
   </div>
