@@ -1,20 +1,18 @@
-<div class="">
-
-  <div class="mypage-list">
-    <h1>マイページ</h1>
-
-    <ul>
-      <li><%= link_to "プロフィール編集", edit_user_path(current_user.id) %></li>
-      <li><%= link_to "ブックマーク", user_path(current_user.id) %></li>
-      <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
-      <li><%= link_to "退会する", user_confirm_path %></li>
-    </ul>
+<div class="public-mypage">
+  <p class="public-mypage-email"><%= @user.email %>さん</p>
+  
+  <div class="public-mypage-wrap">
+    <div class="public-mypage-lists">
+      <div class="public-mypage-list"><%= link_to "プロフィール編集", edit_user_path(current_user.id) %></div>
+      <div class="public-mypage-list"><%= link_to "ブックマーク", user_path(current_user.id) %></div>
+      <div class="public-mypage-list"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></div>
+      <div class="public-mypage-list"><%= link_to "退会する", user_confirm_path %></div>
+    </div>
+  
+    <div class="public-mypage-bookmark-list">
+      <h2 class="public-mypage-bookmark-title">ブックマーク一覧</h2>
+      <%= render "public/sites/list", sites: @sites, thumbnail: @thumbnail %>
+      <%= will_paginate @sites, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
+    </div>
   </div>
-
-  <div class="bookmark-list">
-    <h2>ブックマーク一覧</h2>
-    <%= render "public/sites/list", sites: @sites, thumbnail: @thumbnail %>
-    <%= will_paginate @sites, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
-  </div>
-
 </div>

@@ -11,11 +11,21 @@
   display: flex;
   justify-content: center;
   height: 400px;
+  align-items: center;
+}
+
+.search-about {
+  text-align: center;
+}
+
+.site-about {
+  margin-bottom: 40px;
 }
 
 /*フォーム全体*/
 #search-form{
-  line-height: 400px;
+  display: flex;
+  justify-content: center;
 }
 /*検索ボックス*/
 .sbox{

@@ -1,10 +1,16 @@
 <div class="top">
+  
   <div class="search-form-wrap">
-    <div id="search-form">
-      <%= form_with url: search_sites_path, method: :get, local: true do |f| %>
-          <%= f.text_field :title, placeholder: " search",  class: "sbox" %>
-          <%= f.submit "検索", class: "sbtn" %>
-      <% end %>
+    <div class="search-about">
+      <div class="site-about">
+        「materialler」は、素材サイトを探すためのサイトです。
+      </div>
+      <div id="search-form">
+        <%= form_with url: search_sites_path, method: :get, local: true do |f| %>
+            <%= f.text_field :title, placeholder: "",  class: "sbox" %>
+            <%= f.submit "検索", class: "sbtn" %>
+        <% end %>
+      </div>
     </div>
   </div>
 

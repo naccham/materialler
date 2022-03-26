@@ -10,7 +10,6 @@
   </head>
 
   <body>
-    <div class="all-wrap">
       <div class="header">
         <div class="header-wrap">
           <div class="header-logo">
@@ -26,24 +25,20 @@
 
           <% elsif user_signed_in? %>
 
-          <div class="header-site-list">
+          <div class="menu-lists">
               <%= link_to 'サイト一覧', sites_path, class: '' %>
           </div>
           <div class="mypage">
             <%= link_to 'マイページ', user_path(current_user.id) %>
           </div>
           <% else %>
+          <div class="menu-lists">
+            <div class="menu-list"><%= link_to '管理者ログイン', new_admin_session_path, class: '' %></div>
+            <div class="menu-list"><%= link_to '会員ログイン', new_user_session_path, class: '' %></div>
           </div>
-          <nav class="global">
-            <ul class="menu-list">
-              <li class="menu-item"><%= link_to '管理者ログイン', new_admin_session_path, class: '' %></li>
-              <li class="menu-item"><%= link_to '会員ログイン', new_user_session_path, class: '' %></li>
-            </ul>
-          </nav>
             <% end %>
           </div>
         </div>
-      </div>
 
       <div class="main">
         <div class="main-wrap">

@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :tags do
     get 'sites', to: 'sites#search'end
     resources :users, only: [:show, :index, :edit, :update]
+    # get 'flag', to: 'contact#thanks'
   end
 
   scope module: :public do

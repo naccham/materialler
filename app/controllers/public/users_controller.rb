@@ -8,6 +8,7 @@ class Public::UsersController < ApplicationController
     bookmark_ids = Bookmark.where(user_id: current_user.id).pluck(:id)
     # ブックマークのIDを元にサイトの検索をかける
     @sites = Site.where(bookmark_id: bookmark_ids).paginate(page: params[:page], per_page: 10)
+    @user = User.find(params[:id])
   end
 
   def edit

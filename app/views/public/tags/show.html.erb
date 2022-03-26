@@ -1,12 +1,25 @@
-<%= form_tag(controller: "public/tags", action: "show") do %>
-  <%= select_tag("選択してください", options_for_select(["新しい順","古い順","ブックマーク数が多い順","ブックマークが少ない順"])) %>
-  <%= submit_tag("検索") %>
-<% end %>
+<div class="public-tag-show">
 
+  
+  <div class="public-tag-title">
+    <h2><%= @tag.name %></h2>
+    <p><%= @site.count %>件</p>
+    <!--<div class="public-tag-form">-->
+      <%#= form_tag(controller: "public/tags", action: "show") do %>
+        <%#= select_tag("選択してください", options_for_select(["新しい順","古い順","ブックマーク数が多い順","ブックマークが少ない順"])) %>
+        <%#= submit_tag("検索") %>
+      <%# end %>
+    <!--</div>-->
+    
+  </div>
+  
+  <!--<div class="public-bookmark-rank">-->
+    <!--<p>ブックマークが多い順</p>-->
+    <!--<p>ブックマークが少ない順</p>-->
+  <!--</div>-->
+  
+  <%= render "public/sites/list", sites: @site, thumbnail: @thumbnail %>
+  
+  <%= will_paginate @site, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
 
-<h2>タグ検索結果</h2>
-<p><%= @tag.count %>件</p>
-
-<%= render "public/sites/list", sites: @tag, thumbnail: @thumbnail %>
-
-<%= will_paginate @tag, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
+</div>

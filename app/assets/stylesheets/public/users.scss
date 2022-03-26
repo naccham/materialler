@@ -1,3 +1,30 @@
 // Place all the styles related to the user/users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.public-mypage-email {
+  margin: 30px 0;
+
+}
+
+.public-mypage-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.public-mypage-lists {
+  width: 200px;
+}
+
+.public-mypage-list {
+  text-decoration: none;
+  margin: 10px 0;
+}
+
+.public-mypage-bookmark-title {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+
+
