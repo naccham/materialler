@@ -18,7 +18,7 @@
         <%= tag.name %>
         <div class="admin-tag-btn">
           <%= link_to "編集", edit_admin_tag_path(tag.id), class: '' %>
-          <%= link_to "削除", admin_tag_path(tag.id), method: :delete  %>
+          <%= link_to "削除", admin_tag_path(tag.id), method: :delete, data: {confirm: "削除しますか？"}  %>
         </div>
       </div>
     <% end %>

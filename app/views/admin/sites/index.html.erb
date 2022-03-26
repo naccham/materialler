@@ -52,9 +52,8 @@
             <span style="padding:4px;background-color:lightgray;border-radius: 4px;"><%= tag.name %></span>
           <% end %>
           <div class="admin-site-edit">
-            <%= link_to "詳細", admin_site_path(site.id), class: 'id-btn' %>
             <%= link_to "編集", edit_admin_site_path(site.id), class: 'id-btn' %>
-            <%= link_to "削除", admin_site_path(site.id), method: :delete, class: 'id-btn'  %>
+            <%= link_to "削除", admin_site_path(site.id), method: :delete, class: 'id-btn', data: {confirm: "削除しますか？"}  %>
           </div>
         </div>
       </div>

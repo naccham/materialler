@@ -1,46 +1,50 @@
-<div class="sites">
+<div class="public-sites-show">
+  <div class="public-sites-show-wrap">
 
-  <div class="site">
-    <%= link_to @site.url do %>
-      <h2 class="site-title"><%= @site.title %></h2>
-    <% end %>
-
-    <div class="site-thumbnail">
+    <div class="public-site-show">
       <%= link_to @site.url do %>
-          <%= image_tag @thumbnail + @site.url %>
+        <h2 class="site-title"><%= @site.title %></h2>
       <% end %>
+
+      <div class="site-thumbnail">
+        <%= link_to @site.url do %>
+            <%= image_tag @thumbnail + @site.url %>
+        <% end %>
+      </div>
+
+      <!--ブックマーク機能-->
+      <div class="site-bookmark">
+        <span id="bookmark_buttons_<%= @site.id %>">
+          <%= render "public/bookmarks/bookmark", site: @site %>
+        </span>
+      </div>
+
+      <!--カテゴリ-->
+      <div class="site-category">
+      <% @site.tags.each do |tag| %>
+        <%= link_to tag_path(tag.id) do %>
+          <span style="padding:4px;background-color:lightblue;border-radius: 4px;"><%= tag.name %></span>
+        <% end %>
+      <% end %>
+      </div>
+
+      <p class="site-introduce">
+        <%= @site.introduce %>
+      </p>
+
+      <%= link_to ">#{@site.comments.count}comment", site_path(@site.id), class: "site-comment" %>
     </div>
 
-    <!--ブックマーク機能-->
-    <div class="site-bookmark">
-      <span id="bookmark_buttons_<%= @site.id %>">
-        <%= render "public/bookmarks/bookmark", site: @site %>
-      </span>
+    <!--コメントフォーム-->
+    <% if user_signed_in? %>
+    <div class="new-comment">
+      <%= render 'public/comments/form', site: @site, comment: @comment %>
     </div>
-
-    <!--カテゴリ-->
-    <div class="site-category">
-    <% @site.tags.each do |tag| %>
-      <span style="padding:4px;background-color:lightgray;border-radius: 4px;"><%= tag.name %></span>
     <% end %>
+
+    <!--コメント一覧部分-->
+    <div id="comments_area">
+      <%= render 'public/comments/site_comments', site: @site, comment: @comment %>
     </div>
-
-    <p class="site-introduce">
-      <%= @site.introduce %>
-    </p>
-
-    <%= link_to ">#{@site.comments.count}comment", site_path(@site.id), class: "site-comment" %>
   </div>
-</div>
-
-<!--コメントフォーム-->
-<% if user_signed_in? %>
-<div class="new-comment">
-  <%= render 'public/comments/form', site: @site, comment: @comment %>
-</div>
-<% end %>
-
-<!--コメント一覧部分-->
-<div id="comments_area">
-  <%= render 'public/comments/site_comments', site: @site, comment: @comment %>
 </div>

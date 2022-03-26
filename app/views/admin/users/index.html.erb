@@ -5,7 +5,7 @@
       <%= link_to admin_user_path(user.id) do %>
         <%= user.email %>
       <% end %>
-      <%= user.active %>
+      <%= user.active ? '有効' : '退会済み' %>
     </p>
   <% end %>
 </div>

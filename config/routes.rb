@@ -6,11 +6,11 @@ Rails.application.routes.draw do
   root to: 'public/homes#top'
 
   namespace :admin do
-    resources :sites, except: [:new]
+    resources :sites, except: [:new, :show]
     resources :tags, only: [:index, :new, :create, :edit, :update, :destroy]
     resources :tags do
     get 'sites', to: 'sites#search'end
-    resources :users, only: [:show, :index, :edit, :update]
+    resources :users, only: [:index, :edit, :update]
     # get 'flag', to: 'contact#thanks'
   end
 
@@ -26,8 +26,8 @@ Rails.application.routes.draw do
     end
     resources :contacts, only: [:new, :create]
     post 'contact/confirm', to: 'contacts#confirm', as: 'confirm'
-    post 'contact/back', to: 'contact#back', as: 'back'
-    get 'thanks', to: 'contact#thanks', as: 'thanks'
+    post 'contact/back', to: 'contacts#back', as: 'back'
+    get 'thanks', to: 'contacts#thanks', as: 'thanks'
     get 'about', to: 'homes#about'
     get 'user/confirm', to: 'users#confirm'
     patch 'withdrawal' => 'users#withdrawal'

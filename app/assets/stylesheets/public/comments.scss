@@ -1,3 +1,21 @@
 // Place all the styles related to the public/comments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.public-sites-show {
+  display: flex;
+  justify-content: center;
+}
+
+.public-site-comment-title {
+  margin-bottom: 10px;
+}
+
+
+.public-site-comment {
+  
+}
+
+.public-site-comment-date {
+  font-size: 12px;
+}
