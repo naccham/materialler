@@ -53,7 +53,8 @@
   margin-bottom: 10px;
   font-size: 12px;
   display: flex;
-  height: 120px;
+  height: 150px;
+  align-items: center;
 }
 
 .admin-site:nth-child(odd) {
@@ -84,4 +85,17 @@
 
 .admin-site-edit {
   display: inline-block;
+  margin-left: 30px;
+}
+
+.admin-site-cmc-er {
+  display: flex;
+  justify-content: between;
+}
+
+
+.id-btn {
+  border: solid 1px;
+  padding: 2px;
+  border-radius: 4px;
 }

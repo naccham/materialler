@@ -6,40 +6,24 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Admin.create!(
+Admin.create(
  email: 'test@test.com',
  password: 'testtest'
 )
 
 10.times do |n|
-  User.create!(
+  User.create(
     # n + 1で数字が重複しないようにする
     email: "test#{n + 1}@test.com",
-    name: "テストユーザー#{n + 1}",
-    password: "testhoge"
+    password: "testtest"
   )
 end
 
-Tag.create!(
- tag: '写真',
- )
- 
- Tag.create!(
- tag: 'イラスト',
- )
- 
- Tag.create!(
- tag: 'アイコン',
- )
- 
- Tag.create!(
- tag: 'シルエット',
- )
- 
- Tag.create!(
- tag: 'テクスチャ',
- )
- 
- Tag.create!(
- tag: 'パターン',
- )
+Tag.create([
+ {name: '写真'},
+ {name: 'イラスト'},
+ {name: 'アイコン'},
+ {name: 'シルエット'},
+ {name: 'テクスチャ'},
+ {name: 'パターン'}
+ ])

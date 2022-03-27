@@ -25,11 +25,8 @@
 
           <% elsif user_signed_in? %>
 
-          <div class="menu-lists">
-              <%= link_to 'サイト一覧', sites_path, class: '' %>
-          </div>
           <div class="mypage">
-            <%= link_to 'マイページ', user_path(current_user.id) %>
+            <%= link_to 'マイページ', user_path(current_user.id) %><i class="fas fa-user"></i>
           </div>
           <% else %>
           <div class="menu-lists">

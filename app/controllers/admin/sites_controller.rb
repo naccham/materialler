@@ -1,15 +1,24 @@
 class Admin::SitesController < ApplicationController
 
+  before_action :authenticate_admin!
+
   def index
     @thumbnail = "http://capture.heartrails.com/170x100/shorten?"
     @site = Site.new
-    @sites = Site.all
+    @sites = Site.all.order(id: "DESC")
     @posts = params[:tag_id].present? ? Site.find(params[:tag_id]).tags : Site.all
   end
 
   def create
-    @site = Site.create(site_params)
-    redirect_to admin_sites_path
+    @site = Site.new(site_params)
+    if @site.save
+      redirect_to admin_sites_path
+    else
+      @thumbnail = "http://capture.heartrails.com/170x100/shorten?"
+      @posts = params[:tag_id].present? ? Site.find(params[:tag_id]).tags : Site.all
+      @sites = Site.all.order(id: "DESC")
+      render :index
+    end
   end
 
   def show
@@ -23,8 +32,7 @@ class Admin::SitesController < ApplicationController
 
   def update
     @site = Site.find(params[:id])
-    if @site.update(site_params)
-    end
+    @site.update(site_params)
     redirect_to admin_sites_path
   end
 
@@ -35,10 +43,9 @@ class Admin::SitesController < ApplicationController
   end
 
 
-
   private
 
   def site_params
-    params.require(:site).permit(:title, :introduce, :url, tag_ids: [])
+    params.require(:site).permit(:title, :introduce, :url, :commercial_use, :credit_notation, tag_ids: [])
   end
 end

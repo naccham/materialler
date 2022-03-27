@@ -16,9 +16,31 @@
   // background-color: lightblue;
 }
 
+.heart-comment {
+  display: flex;
+  justify-content: center;
+}
+
+.comment-mark {
+  margin-left: 30px;
+}
+
+.bookmark-count {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.bookmark-fontawesome {
+  font-size: 1.2em;
+}
+
 .site-bookmark {
   display: inline-block;
   margin-top: 10px;
+}
+
+.site-comment-mark {
+  display: inline-block;
 }
 
 .site-category {
@@ -35,6 +57,11 @@
 
 .site-introduce {
   font-size: 15px;
+}
+
+.site-cmc-cr p {
+  font-size: 15px;
+  color:  #8eadd5;
 }
 
 .site-comment {

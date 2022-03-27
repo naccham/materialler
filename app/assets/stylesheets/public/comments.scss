@@ -3,19 +3,39 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .public-sites-show {
+  margin: 40px 0;
   display: flex;
   justify-content: center;
 }
 
-.public-site-comment-title {
-  margin-bottom: 10px;
+.public-sites-show-wrap {
+  width: 640px;
 }
 
+.public-site-comment-title {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
 
-.public-site-comment {
-  
+.public-site-comments {
+  display: flex;
+  align-items: center;
+}
+
+.comment-list-form {
+  padding: 40px;
 }
 
 .public-site-comment-date {
   font-size: 12px;
+}
+
+.public-site-comment-date {
+  color: lightblue;
+  margin-left: 10px;
+}
+
+.comment-delete {
+  display: inline-block;
+  margin-left: 30px;
 }

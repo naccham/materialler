@@ -7,9 +7,9 @@ class Public::HomesController < ApplicationController
     @tag1 = Tag.find(1)
     @tag2 = Tag.find(2)
     @tag3 = Tag.find(3)
-    @tag7 = Tag.find(7)
-    @tag8 = Tag.find(8)
-    @tag9 = Tag.find(9)
+    @tag4 = Tag.find(4)
+    @tag5 = Tag.find(5)
+    @tag6 = Tag.find(6)
     
   end
 

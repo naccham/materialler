@@ -1,4 +1,10 @@
+<div class="comment-form">
 <%= form_with(model:[site, comment], url: site_comments_path(site.id)) do |f| %>
-  <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
-  <%= f.submit "送信する" %>
+  <div class="comment-form-field">
+    <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
+  </div>
+  <div class="comment-form-submit">
+    <%= f.submit "送信する" %>
+  </div>
 <% end %>
+</div>

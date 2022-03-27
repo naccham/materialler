@@ -1,6 +1,6 @@
 <div class="public-sites-show">
   <div class="public-sites-show-wrap">
-
+    <span style="padding: 4p"><%= link_to "< 戻る", sites_path %></span>
     <div class="public-site-show">
       <%= link_to @site.url do %>
         <h2 class="site-title"><%= @site.title %></h2>
@@ -32,19 +32,26 @@
         <%= @site.introduce %>
       </p>
 
-      <%= link_to ">#{@site.comments.count}comment", site_path(@site.id), class: "site-comment" %>
+      <div class="site-cmc-cr">
+        <p>商用利用：<%= @site.commercial_use ? '可能' : '不可' %></p>
+        <p>クレジット表記：<%= @site.credit_notation ? '必要' : '不要' %></p>
+      </div>
     </div>
 
-    <!--コメントフォーム-->
-    <% if user_signed_in? %>
-    <div class="new-comment">
-      <%= render 'public/comments/form', site: @site, comment: @comment %>
-    </div>
-    <% end %>
 
-    <!--コメント一覧部分-->
-    <div id="comments_area">
-      <%= render 'public/comments/site_comments', site: @site, comment: @comment %>
+    <div class="comment-list-form">
+      <!--コメント一覧部分-->
+      <div id="comments_area">
+        <%= render 'public/comments/site_comments', site: @site, comment: @comment %>
+      </div>
+
+       <!--コメントフォーム-->
+      <% if user_signed_in? %>
+      <div class="new-comment">
+        <%= render 'public/comments/form', site: @site, comment: @comment %>
+      </div>
+      <% end %>
     </div>
+
   </div>
 </div>

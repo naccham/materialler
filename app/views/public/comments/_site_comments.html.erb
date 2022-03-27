@@ -1,3 +1,4 @@
+<div>
 <% if site.comments.present? %>
   <p class="public-site-comment-title">コメント件数：<%= site.comments.count %></p>
   <% site.comments.each do |comment| %>
@@ -14,3 +15,4 @@
   <% else %>
   <p>コメントはまだありません</p>
 <% end %>
+</div>

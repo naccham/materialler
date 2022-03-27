@@ -1,22 +1,37 @@
+<div class="heart-comment">
+<!--ログインしている時-->
 <% if user_signed_in? %>
 
-
+  <div>
   <% if site.bookmarked_by?(current_user) %>
       <%= link_to site_bookmarks_path(site.id), method: :delete, remote: true do %>
-        <i class="fas fa-heart bookmark-heart"></i>
+        <i class="fas fa-heart bookmark-fontawesome"></i>
         <span class="bookmark-count"><%= site.bookmarks.count %></span>
       <% end %>
     <% else %>
       <%= link_to site_bookmarks_path(site.id), method: :post, remote: true do %>
-        <i class="far fa-heart bookmark-heart"></i>
+        <i class="far fa-heart bookmark-fontawesome"></i>
         <span class="bookmark-count"><%= site.bookmarks.count %></span>
       <% end %>
   <% end %>
+  </div>
 
 
+<!--ログインしていない時-->
 <% else %>
-
-<i class="far fa-heart bookmark-heart"></i>
-<span class="bookmark-count"><%= site.bookmarks.count %></span>
-
+  <!--ブックマーク-->
+  <div>
+    <i class="far fa-heart bookmark-fontawesome"></i>
+    <span class="bookmark-count"><%= site.bookmarks.count %></span>
+  </div>
 <% end %>
+
+<!--コメント-->
+  <div class="comment-mark">
+    <%= link_to site_path(site.id) do %>
+      <i class="far fa-comment bookmark-fontawesome"></i>
+      <span class="bookmark-count"><%= site.comments.count %></span>
+    <% end %>
+  </div>
+  
+</div>

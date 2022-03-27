@@ -48,14 +48,6 @@ ActiveRecord::Schema.define(version: 2022_03_07_122757) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "post_comments", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "site_id"
-    t.text "comment"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "site_tag_relations", force: :cascade do |t|
     t.integer "site_id"
     t.integer "tag_id"
@@ -69,6 +61,8 @@ ActiveRecord::Schema.define(version: 2022_03_07_122757) do
     t.string "title"
     t.text "introduce"
     t.string "url"
+    t.boolean "commercial_use", default: false, null: false
+    t.boolean "credit_notation", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

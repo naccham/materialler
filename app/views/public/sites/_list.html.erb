@@ -17,7 +17,10 @@
       <span id="bookmark_buttons_<%= site.id %>">
         <%= render "public/bookmarks/bookmark", site: site %>
       </span>
+      
     </div>
+    
+    
 
     <!--カテゴリ-->
     <div class="site-category">
@@ -31,8 +34,13 @@
     <p class="site-introduce">
       <%= site.introduce %>
     </p>
+    
+    <div class="site-cmc-cr">
+      <p>商用利用：<%= site.commercial_use ? '可能' : '不可' %></p>
+      <p>クレジット表記：<%= site.credit_notation ? '必要' : '不要' %></p>
+    </div>
 
-    <%= link_to ">#{site.comments.count}comment", site_path(site.id), class: "site-comment" %>
+    <%= link_to "> comment", site_path(site.id), class: "site-comment" %>
   </div>
 <% end %>
 

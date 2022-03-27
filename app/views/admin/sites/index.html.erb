@@ -1,7 +1,18 @@
 
   <div class="admin-site-form">
+
     <div class="admin-site-form-with">
     <h2>サイト新規登録</h1>
+    <div>
+    <% if @site.errors.any? %>
+      <%= @site.errors.count %>件のエラー
+      <ul>
+      <% @site.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    <% end %>
+    </div>
     <%= form_with model: @site, url: admin_sites_path, local:true do |f| %>
       <div class="admin-site-form-with-field">
         <%= f.label :title, 'サイト名' %>
@@ -20,9 +31,19 @@
 
       <div class="admin-site-form-with-field">
         <%= f.label :tag, 'タグ', class: "" %>
-        <span style="padding:4px;background-color:lightgray;border-radius: 4px;">
+        <span>
           <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) %>
         </span>
+      </div>
+
+      <div class="admin-site-form-with-field">
+        商用利用
+        <%= f.select :commercial_use, [['可能', 1], ['不可', 0]], { include_blank: '選択してください' } %>
+      </div>
+
+      <div class="admin-site-form-with-field">
+        クレジット表記
+        <%= f.select :credit_notation, [['必要', 1], ['不要', 0]], { include_blank: '選択してください' } %>
       </div>
 
       <div class="admin-site-form-with-btn">
@@ -36,6 +57,7 @@
 <div class="admin-main-site">
   <div class="admin-sites">
     <h2>サイト一覧</h2>
+    <span style="background-color: #ff4569; color: white; padding: 4px; border-radius: 2px;">new</span>
     <% @sites.each do |site| %>
       <div class="admin-site">
         <span class="admin-site-image"><%= image_tag @thumbnail + site.url %></span>
@@ -51,9 +73,15 @@
           <% site.tags.each do |tag| %>
             <span style="padding:4px;background-color:lightgray;border-radius: 4px;"><%= tag.name %></span>
           <% end %>
-          <div class="admin-site-edit">
-            <%= link_to "編集", edit_admin_site_path(site.id), class: 'id-btn' %>
-            <%= link_to "削除", admin_site_path(site.id), method: :delete, class: 'id-btn', data: {confirm: "削除しますか？"}  %>
+          <div class="admin-site-cmc-er">
+            <div class="admin-site-cmc">
+              <span>商用利用：<%= site.commercial_use ? '可能' : '不可' %></span>
+              <span>クレジット表記：<%= site.credit_notation ? '必要' : '不要' %></span>
+            </div>
+            <div class="admin-site-edit">
+              <%= link_to "編集", edit_admin_site_path(site.id), class: 'id-btn' %>
+              <%= link_to "削除", admin_site_path(site.id), method: :delete, class: 'id-btn', data: {confirm: "削除しますか？"}  %>
+            </div>
           </div>
         </div>
       </div>

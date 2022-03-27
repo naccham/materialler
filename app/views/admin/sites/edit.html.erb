@@ -23,6 +23,16 @@
           <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) %>
         </span>
       </div>
+      
+      <div class="admin-site-form-with-field">
+        商用利用
+        <%= f.select :commercial_use, [['可能', 1], ['不可', 0]] %>
+      </div>
+      
+      <div class="admin-site-form-with-field">
+        クレジット表記
+        <%= f.select :credit_notation, [['必要', 1], ['不要', 0]]  %>
+      </div>
 
       <div class="admin-site-form-with-btn">
         <%= f.submit '編集を保存', class: "admin-site-btn"  %>
@@ -30,3 +40,5 @@
     <% end %>
     </div>
   </div>
+  
+  
