@@ -1,4 +1,5 @@
 <div>
+  <%= link_to "< 戻る", root_path %>
   <h1>検索結果</h1><%= @sites.count %>件
   <%= render "public/sites/list", sites: @sites, thumbnail: @thumbnail %>
   <%= will_paginate @sites, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>

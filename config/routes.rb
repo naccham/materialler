@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   end
 
   scope module: :public do
-    resources :sites, only: [:index, :show] do
+    resources :sites, only: [:show] do
       get :search, on: :collection
       resources :comments, only: [:create, :destroy]
       resource :bookmarks, only: [:create, :destroy]
