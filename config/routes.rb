@@ -5,14 +5,12 @@ Rails.application.routes.draw do
 
   root to: 'public/homes#top'
 
-
   namespace :admin do
     resources :sites, except: [:new, :show]
     resources :tags, only: [:index, :new, :create, :edit, :update, :destroy]
     resources :tags do
     get 'sites', to: 'sites#search'end
     resources :users, only: [:index, :edit, :update]
-    # get 'flag', to: 'contact#thanks'
   end
 
   scope module: :public do
