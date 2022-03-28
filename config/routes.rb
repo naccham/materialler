@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   root to: 'public/homes#top'
 
+
   namespace :admin do
     resources :sites, except: [:new, :show]
     resources :tags, only: [:index, :new, :create, :edit, :update, :destroy]
