@@ -2,7 +2,7 @@ class Public::HomesController < ApplicationController
 
   def top
     @thumbnail = "http://capture.heartrails.com/huge?"
-    @sites = Site.find(Bookmark.group(:site_id).order('count(site_id) desc').limit(3).pluck(:site_id))
+    @sites = Site.find(Bookmark.group(:site_id).order('count(site_id) desc').limit(10).pluck(:site_id))
 
     @tag1 = Tag.find(1)
     @tag2 = Tag.find(2)
